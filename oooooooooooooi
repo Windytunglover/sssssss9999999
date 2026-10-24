@@ -1,0 +1,6677 @@
+local v1 = getfenv()
+local _ = string.char
+local _ = string.byte
+local _ = bit32.bxor
+local _ = string.gsub
+local _ = string.char
+
+return (function(...)
+		local v23, u24, dy, v28, v30, v31, v32, CurrentCamera, LocalPlayer, u36, u37, t1, DeathScreen, MainMenu, Map, t2, t3, t4, t5, t8, t9, t10, t11, t12, t13, t14, t15, t16, t18, t20, n1, u70, u71, t21, v75, v76, t23, Clouds, t24, u94, u96, u97, u98, n4, n5, v112, v113, v114, v115, v116, v117, n6, n7, n8, n9, u123, ru, Vv, v128, u129, rr, t29, qr, xk, yb, Ch, Nk, Sh, El, Jl, Fu, Ku, Rg, Ep, Km, Pg, ux, nx, Lc, Zr, vb, Ki, xa, Tn, Po, Mq, Le, Rr, aw, vk, Iw, hf, uo, bf, dv, u187, u209, origs, wq, u214, Mh, v229
+
+		do
+			local n2, n3
+			local ap, v191, t49
+
+			do
+				local u69, u95, u99, u100, u101, u102, u103, u105, u109, u110, u111, u122
+				local v38, PlayerGui, v45, LocalMarker, t19, v73, v74, lu, t25
+
+				do
+					local t17
+					local v26, v27, v29, v33, v41, t6, t7
+
+					do
+						if v1._G.__apoc2_cleanup then
+							v1.pcall(v1._G.__apoc2_cleanup)
+						end
+
+						v23 = v1.loadstring(v1.game.HttpGet(v1.game, "https://raw.githubusercontent.com/BloxMan00/UI-Library/refs/heads/main/Library.lua"))()
+							.new()
+						u24 = nil
+
+						function dy(p3)
+							return u24 and u24.Flags[p3]
+						end
+
+						v26 = v1.game.GetService(v1.game, "ReplicatedStorage")
+						v27 = v1.game.GetService(v1.game, "ReplicatedFirst")
+						v28 = v1.game.GetService(v1.game, "Players")
+						v29 = v1.game.GetService(v1.game, "HttpService")
+						v30 = v1.game.GetService(v1.game, "Lighting")
+						v31 = v1.game.GetService(v1.game, "RunService")
+						v32 = v1.game.GetService(v1.game, "UserInputService")
+						v33 = v1.UserSettings().GetService(v1.UserSettings(), "UserGameSettings")
+						v1.game.GetService(v1.game, "CoreGui")
+						CurrentCamera = v1.workspace.CurrentCamera
+						LocalPlayer = v28.LocalPlayer
+						u36 = LocalPlayer.Character or LocalPlayer.CharacterAdded.Wait(LocalPlayer.CharacterAdded)
+						u37 = u36:WaitForChild("HumanoidRootPart")
+						v38 = v1.RaycastParams.new()
+						v38.FilterType = v1.Enum.RaycastFilterType.Blacklist
+						v38.IgnoreWater = true
+						t1 = { u36 }
+						v38.FilterDescendantsInstances = t1
+						PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
+						v41 = PlayerGui:WaitForChild("PlayerList")
+							.WaitForChild(PlayerGui:WaitForChild("PlayerList"), "MainList")
+							.WaitForChild(PlayerGui:WaitForChild("PlayerList").WaitForChild(PlayerGui:WaitForChild("PlayerList"), "MainList"), "SquadList")
+							.WaitForChild(
+								PlayerGui:WaitForChild("PlayerList")
+									.WaitForChild(PlayerGui:WaitForChild("PlayerList"), "MainList")
+									.WaitForChild(PlayerGui:WaitForChild("PlayerList").WaitForChild(PlayerGui:WaitForChild("PlayerList"), "MainList"), "SquadList"),
+								"ScrollingFrame"
+							)
+						DeathScreen = PlayerGui:FindFirstChild("DeathScreen")
+						MainMenu = PlayerGui:FindFirstChild("MainMenu")
+						Map = PlayerGui:WaitForChild("Map")
+						v45 = Map:WaitForChild("ClipBin").WaitForChild(Map:WaitForChild("ClipBin"), "DragBin")
+						LocalMarker = v45:WaitForChild("LocalMarker")
+						t2 = {}
+						t3 = {}
+						t4 = {}
+						t5 = {}
+						t6 = {}
+						t7 = {}
+						t8 = {}
+						t9 = {}
+						t10 = {}
+						t11 = {}
+						t12 = {}
+						t13 = {}
+						t14 = {}
+						t15 = {}
+						t16 = {}
+						t17 = {}
+						t18 = {}
+						t19 = {}
+						t20 = {}
+						n1 = 0
+						n2 = 30
+						n3 = 60
+						u69 = nil
+						u70 = nil
+						u71 = nil
+						t21 = {}
+						v73 = v1.workspace.FindFirstChild(v1.workspace, "Vehicles")
+						v74 = v1.workspace.FindFirstChild(v1.workspace, "Zombies")
+						v75 = v1.workspace.FindFirstChild(v1.workspace, "Corpses")
+						v76 = v1.workspace.FindFirstChild(v1.workspace, "Map") and v1.workspace.Map.FindFirstChild(v1.workspace.Map, "Elements")
+
+						local v77 = v26:WaitForChild("Chunking")
+							.WaitForChild(v26:WaitForChild("Chunking"), "Core Models")
+							.WaitForChild(v26:WaitForChild("Chunking").WaitForChild(v26:WaitForChild("Chunking"), "Core Models"), "Random Events")
+
+						for _, v79 in v1.ipairs(v77:GetChildren()) do
+							t20[v79.Name] = true
+						end
+
+						local t22 = {
+							SeahawkCrashsiteRogue01 = "Seahawk Crash",
+							SeahawkCrashsiteRogue02 = "Seahawk Crash",
+							SeahawkIntactRogue01 = "Seahawk Intact",
+							SeahawkCrashsite01 = "Seahawk Crash",
+							SeahawkCrashsite02 = "Seahawk Crash",
+							SeahawkCrashsite03 = "Seahawk Crash",
+							SeahawkCrashsite04 = "Seahawk Crash",
+							FuneralProcession01 = "Funeral Procession",
+							GraveFresh01 = "Fresh Grave",
+							GraveNumberOne1 = "Grave",
+							CamperRVEvent01 = "Camper RV",
+							CampSovietBandit01 = "Soviet Bandit Camp",
+							InvestigatorCaprice01 = "Investigator",
+							MilitaryBlockade01 = "Military Blockade",
+							MilitaryConvoyAmbushed01 = "Ambushed Convoy",
+							MilitaryConvoy01 = "Military Convoy",
+							JetRangerGemBroker01 = "Gem Broker",
+							ParamedicScene01 = "Paramedic Scene",
+							PoliceBlockade01 = "Police Blockade",
+							LongswordStone01 = "Longsword",
+							StrandedStation01 = "Stranded Station",
+							StrandedStationKeyboard01 = "Stranded Station",
+							BankTruckRobbery01 = "Bank Truck Robbery",
+							SpecialForcesCrash01 = "Special Forces Crash",
+							["C-123ProviderMilitary01"] = "C-123 Military",
+							["C-123ProviderMilitary02"] = "C-123 Military",
+							RenegadeCamp01 = "Renegade Camp",
+							BeachedAluminumBoat01 = "Beached Boat",
+							CrashPrisonBus01 = "Prison Bus Crash",
+							PirateTreasure01 = "Pirate Treasure",
+							ThreeEightsRandomEvent01 = "Three Eights",
+							PartyTrailerDisco01 = "Party Trailer",
+							PartyTrailerTechnoGold = "Party Trailer (Gold)",
+							ATVCrashsiteRenegade01 = "ATV Crash",
+							RandomCrashCessna01 = "Cessna Crash",
+							SedanHaul01 = "Sedan Haul",
+							PopupFishing01 = "Fishing Spot",
+							PopupFishing02 = "Fishing Spot",
+							ConstructionWorksite01 = "Construction Site",
+						}
+
+						function lu(p4)
+							if t22[p4] then
+								return t22[p4]
+							end
+
+							return (
+								(p4:match("^(.-)%d+$") or p4)
+									.gsub(p4:match("^(.-)%d+$") or p4, "(%l)(%u)", "%1 %2")
+									.gsub((p4:match("^(.-)%d+$") or p4).gsub(p4:match("^(.-)%d+$") or p4, "(%l)(%u)", "%1 %2"), "(%u%u)(%u%l)", "%1 %2")
+							)
+						end
+					end
+
+					t23 = {}
+
+					local v83 = v26.Chunking.FindFirstChild(v26.Chunking, "Chunk Data")
+
+					if v83 then
+						for _, v85 in v1.ipairs(v83:GetChildren()) do
+							for _, v87 in v1.ipairs(v85:GetChildren()) do
+								if t20[v87.Name] and v87:IsA("CFrameValue") then
+									t23[#t23 + 1] = {
+										cfv = v87,
+										name = v87.Name,
+										pos = v87.Value.Position,
+									}
+								end
+							end
+						end
+					end
+
+					local v88 = v1.CFrame.new(v1.Vector3.new(-7349.5, 0, -6187.3), v1.Vector3.new(-7349.5, 0, -6186.3))
+					local v89 = v1.Vector3.new(-13499, 0, -12386)
+
+					t21.origBrightness = v30.Brightness
+					t21.origClockTime = v30.ClockTime
+					t21.origFogEnd = v30.FogEnd
+					t21.origShadows = v30.GlobalShadows
+					t21.colorShift_Bottom = v30.ColorShift_Bottom
+					t21.colorShift_Top = v30.ColorShift_Top
+					t21.outdoorAmbient = v30.OutdoorAmbient
+					t21.origAmbient = v30.Ambient
+					t21.origDecay = v30.Atmosphere.Decay
+					t21.origColor = v30.Atmosphere.Color
+					t21.origDensity = v30.Atmosphere.Density
+					Clouds = v1.workspace.Terrain.Clouds
+					t24 = {
+						LOCK_BASE_MOUSE_DELTA = 0.52,
+						LOCK_REFERENCE_ROBLOX_SENS = 1,
+						MIN_LOCK_PIXEL_STEP = 1,
+						BASE_CENTER_EPSILON = 0.35,
+						AIM_TARGET_LOSS_BUFFER = 30,
+						MAX_MOUSE_STEP = 50,
+						SCOPED_FOV_THRESHOLD = 33,
+						SCOPED_SLOWDOWN_MULT = 1.3,
+						THIRD_PERSON_SLOWDOWN_MULT = 1.5,
+						DEFAULT_PREDICTION_VELOCITY = 1800,
+					}
+					local u92 = nil
+					local u93 = false
+					u94 = nil
+					u96 = nil
+					u97 = nil
+					u98 = nil
+					u99 = false
+					u100 = nil
+					u101 = nil
+					u102 = nil
+					u103 = nil
+					local u104 = nil
+					u105 = nil
+					t25 = {}
+					n4 = 0
+					n5 = 0
+					u109 = false
+					u110 = nil
+					u111 = nil
+					v112 = v1.Color3.new(0, 0, 0)
+					v113 = v1.Color3.new(1, 1, 1)
+					v114 = v1.Color3.fromRGB(255, 0, 0)
+					v115 = v1.Color3.fromRGB(0, 255, 0)
+					v116 = v1.Color3.fromRGB(255, 255, 0)
+					v1.Color3.fromRGB(255, 255, 0)
+					t21.FULLBRIGHT_SHIFT = v1.Color3.fromRGB(233, 204, 83)
+					v117 = v1.Vector3.new(0, 1, 0)
+					n6 = 1920
+					n7 = 1080
+					n8 = 0.7
+					n9 = 1.7777777777777777
+					u122 = CurrentCamera and CurrentCamera.CFrame or v1.CFrame.identity
+					u123 = nil
+
+					local function Fl(p5)
+						return (function()
+							if u123 then
+								v1.pcall(function()
+									u123:Disconnect()
+								end)
+								u123 = nil
+							end
+
+							if p5 then
+								u122 = p5.CFrame
+								u123 = p5.GetPropertyChangedSignal(p5, "CFrame").Connect(p5:GetPropertyChangedSignal("CFrame"), function()
+									u122 = p5.CFrame
+								end)
+							end
+						end)()
+					end
+
+					Fl(CurrentCamera)
+					v1.workspace
+						.GetPropertyChangedSignal(v1.workspace, "CurrentCamera")
+						.Connect(v1.workspace.GetPropertyChangedSignal(v1.workspace, "CurrentCamera"), function()
+							CurrentCamera = v1.workspace.CurrentCamera
+							Fl(CurrentCamera)
+						end)
+
+					function ru(p8)
+						return (function()
+							local v499 = u122:PointToObjectSpace(p8)
+
+							if v499.Z >= 0 then
+								return v1.Vector3.new(0, 0, -v499.Z), false
+							end
+
+							local v500 = -v499.Z
+							local v501 = v499.X / v500 / (n8 * n9)
+							local v502 = v499.Y / v500 / n8
+
+							return v1.Vector3.new((v501 + 1) * 0.5 * n6, (1 - v502) * 0.5 * n7, v500), true
+						end)()
+					end
+					function Vv()
+						return u122.Position
+					end
+
+					local t26 = {
+						{
+							"Head",
+							"UpperTorso",
+						},
+						{
+							"UpperTorso",
+							"LowerTorso",
+						},
+						{
+							"UpperTorso",
+							"LeftUpperArm",
+						},
+						{
+							"LeftUpperArm",
+							"LeftLowerArm",
+						},
+						{
+							"LeftLowerArm",
+							"LeftHand",
+						},
+						{
+							"UpperTorso",
+							"RightUpperArm",
+						},
+						{
+							"RightUpperArm",
+							"RightLowerArm",
+						},
+						{
+							"RightLowerArm",
+							"RightHand",
+						},
+						{
+							"LowerTorso",
+							"LeftUpperLeg",
+						},
+						{
+							"LeftUpperLeg",
+							"LeftLowerLeg",
+						},
+						{
+							"LeftLowerLeg",
+							"LeftFoot",
+						},
+						{
+							"LowerTorso",
+							"RightUpperLeg",
+						},
+						{
+							"RightUpperLeg",
+							"RightLowerLeg",
+						},
+						{
+							"RightLowerLeg",
+							"RightFoot",
+						},
+					}
+
+					v128 = v1.Instance.new("Part")
+					v128.Anchored = true
+					v128.CanCollide = false
+					v128.Transparency = 1
+					v128.Size = v1.Vector3.new(0.1, 0.1, 0.1)
+					v128.CFrame = v1.CFrame.new(0, 0, 0)
+					v128.Parent = v1.workspace
+					u129 = nil
+
+					local t27 = {
+						["AC-556"] = 4630,
+						["AK-47"] = 3800,
+						["AK-47 Draco"] = 3440,
+						["AK-74"] = 4610,
+						AKM = 3900,
+						["AKS-74U"] = 4000,
+						["AO-46"] = 3580,
+						["AS Val"] = 2090,
+						AUG = 4670,
+						["Auto-5"] = 2450,
+						["Camp Carbine"] = 2850,
+						["Coach Gun"] = 2530,
+						["Coach GunMod1"] = 2380,
+						["Desert Eagle"] = 2550,
+						["Desert EagleMod1"] = 2390,
+						["Dragunov SVD"] = 4400,
+						FAL = 4370,
+						G17 = 2475,
+						G3 = 4270,
+						["Hi-Power"] = 2520,
+						L96A1 = 4650,
+						Lupara = 2180,
+						LuparaMod1 = 2180,
+						LuparaMod2 = 2180,
+						["M1 Carbine"] = 3475,
+						["M1 Garand"] = 4370,
+						["M1 Thompson"] = 2215,
+						M14 = 4370,
+						M16 = 4625,
+						M16A2 = 4650,
+						M1903 = 4425,
+						M1911Mod1 = 2040,
+						["M1918 BAR"] = 4380,
+						["M1918 Tankgewehr"] = 0,
+						M1919A6 = 4360,
+						M1919A6Mod1 = 4360,
+						["M2 Carbine"] = 3475,
+						M21 = 4425,
+						M249 = 4575,
+						["M249 Paratrooper"] = 4415,
+						M3A1 = 2140,
+						M40A1 = 4575,
+						M4A1 = 4415,
+						M4A1Mod1 = 4415,
+						M60 = 4370,
+						M60Mod1 = 4370,
+						M9 = 2600,
+						M93R = 2600,
+						["MAC-10"] = 2000,
+						["MAC-10Mod1"] = 2000,
+						["MAT-49"] = 2740,
+						["MK23 SOCOM"] = 2200,
+						["MP 40"] = 2765,
+						MP5 = 2700,
+						MP5K = 2600,
+						["MSG-90"] = 4425,
+						Makarov = 2260,
+						MakarovMod1 = 2260,
+						["Maverick 88"] = 2600,
+						["Maverick 88 Tactical"] = 2600,
+						["Medic Dart Gun"] = 850,
+						["Mini-14"] = 4670,
+						["Model 29"] = 2475,
+						["Model 459"] = 2490,
+						["Mosin M44 Carbine"] = 3960,
+						["Mosin Obrez"] = 3280,
+						["Mosin PU"] = 4400,
+						["OTS-14 Groza"] = 1975,
+						["P220 SIG"] = 2100,
+						PKM = 4240,
+						["PP-19 Bizon"] = 2340,
+						["PSG-1"] = 4450,
+						Patriot = 4075,
+						Python = 2735,
+						RPK = 3970,
+						["RPK-74M"] = 4700,
+						["Remington 788"] = 3600,
+						["Remington 788 Carbine"] = 4300,
+						["Ruger Model 44 Carbine"] = 3380,
+						SKS = 3960,
+						["SPAS-12"] = 2410,
+						["SVT-40"] = 4270,
+						["Skorpion vz.65"] = 2290,
+						["TEC-9"] = 2500,
+						UMP45 = 2180,
+						Uzi = 2665,
+						UziMod1 = 2720,
+						["VSS Vintorez"] = 2275,
+						["Walther P38"] = 2430,
+						["Winchester 1894 Ranger"] = 3700,
+						["Winchester 1894Mod1"] = 3525,
+						["Winchester 1894"] = 3130,
+						XM177 = 4415,
+						["M1909 Snubnose"] = 1815,
+						M1911 = 2040,
+						["Santa's Pig"] = 1100,
+					}
+
+					function rr()
+						if not u104 then
+							local v280, v281 = v1.pcall(function()
+								return (function()
+									local v1106 = v1.require(v27:WaitForChild("Framework", 10))
+
+									if v1106 and v1106.WaitForLoaded then
+										v1.pcall(function()
+											v1106:WaitForLoaded()
+										end)
+									end
+
+									return v1106
+								end)()
+							end)
+
+							if v280 and v281 then
+								u104 = v281
+							end
+
+							return u104
+						end
+
+						return u104
+					end
+
+					t29 = {
+						byGun = {},
+						dataCache = {},
+						getSkinIDs = function()
+							local t28 = {}
+							local v283 = v26:FindFirstChild("WeaponSkins")
+
+							if v283 then
+								local function rh(p13)
+									for _, v505 in v1.ipairs(p13:GetChildren()) do
+										if not v505:IsA("ModuleScript") then
+											if v505:IsA("Folder") then
+												rh(v505)
+											end
+										else
+											v1.table.insert(t28, v505.Name)
+										end
+									end
+								end
+
+								rh(v283)
+								v1.table.sort(t28)
+
+								return t28
+							end
+
+							return t28
+						end,
+					}
+
+					function t29.getSkinData(p14)
+						return (function()
+							if t29.dataCache[p14] then
+								return t29.dataCache[p14]
+							end
+
+							local v508 = v26:FindFirstChild("WeaponSkins")
+
+							if v508 then
+								local p14_2 = v508:FindFirstChild(p14, true)
+
+								if p14_2 then
+									local v510, v511 = v1.pcall(function()
+										return v1.require(p14_2)
+									end)
+
+									if not v510 then
+										v510, v511 = v1.pcall(function()
+											return v1.loadstring(p14_2.Source)()
+										end)
+									end
+
+									if v510 then
+										t29.dataCache[p14] = v511
+
+										return v511
+									end
+
+									return nil, "Failed to load skin module: " .. v1.tostring(v511)
+								end
+
+								return nil, "Skin module '" .. v1.tostring(p14) .. "' not found"
+							end
+
+							return nil, "WeaponSkins folder not found"
+						end)()
+					end
+					function t29.cleanSkinManual(p17)
+						return (function()
+							for _, v515 in v1.ipairs(p17:GetDescendants()) do
+								if not v515:IsA("Texture") or v515.Name ~= "Skin Texture" then
+									if v515:IsA("SpecialMesh") then
+										local OriginalVertexColor = v515:GetAttribute("OriginalVertexColor")
+										local OriginalTextureId = v515:GetAttribute("OriginalTextureId")
+
+										if OriginalVertexColor then
+											v515.VertexColor = OriginalVertexColor
+										end
+
+										if OriginalTextureId then
+											v515.TextureId = OriginalTextureId
+										end
+									end
+								else
+									v515:Destroy()
+								end
+							end
+						end)()
+					end
+					function t29.applySkinManual(p20, p21)
+						return (function()
+							if not p21 or not p21.Patterns then
+								return false, "Invalid skin data"
+							end
+
+							t29.cleanSkinManual(p20)
+
+							local n10 = 0
+
+							for _, v522 in v1.ipairs(p20:GetDescendants()) do
+								local SkinPattern = v522:GetAttribute("SkinPattern")
+								local v524 = SkinPattern and (p21.Patterns[SkinPattern] or p21.Patterns[v1.tostring(SkinPattern)])
+
+								if not v524 then
+									local BackupPattern = v522:GetAttribute("BackupPattern")
+
+									v524 = BackupPattern and (p21.Patterns[BackupPattern] or p21.Patterns[v1.tostring(BackupPattern)])
+								end
+
+								if v524 and v524.Channel1 and v524.Channel2 then
+									local v526 = v524.Channel1[1]
+									local v527 = v1.Color3.new(v524.Channel1[2], v524.Channel1[3], v524.Channel1[4])
+									local v528 = v524.Channel2[1]
+									local v529 = v1.Color3.new(v524.Channel2[2], v524.Channel2[3], v524.Channel2[4])
+
+									if not v522:IsA("MeshPart") then
+										local SpecialMesh = v522:FindFirstChildOfClass("SpecialMesh")
+										local Texture = v522:FindFirstChildOfClass("Texture")
+
+										if SpecialMesh then
+											if not SpecialMesh:GetAttribute("OriginalVertexColor") then
+												SpecialMesh:SetAttribute("OriginalVertexColor", SpecialMesh.VertexColor)
+											end
+
+											if not SpecialMesh:GetAttribute("OriginalTextureId") then
+												SpecialMesh:SetAttribute("OriginalTextureId", SpecialMesh.TextureId)
+											end
+
+											if not Texture then
+												Texture = v1.Instance.new("Texture", v522)
+												Texture.Name = "Skin Texture"
+											end
+
+											SpecialMesh.VertexColor = v1.Vector3.new(v527.R, v527.G, v527.B)
+											SpecialMesh.TextureId = v526
+											Texture.Texture = v528
+											Texture.Color3 = v529
+											Texture.Transparency = v522.Transparency
+											n10 += 1
+										end
+									else
+										for _, v533 in v1.ipairs(v1.Enum.NormalId.GetEnumItems(v1.Enum.NormalId)) do
+											local v534 = v1.Instance.new("Texture")
+
+											v534.Name = "Skin Texture"
+											v534.Texture = v526
+											v534.Color3 = v527
+											v534.Transparency = v522.Transparency
+											v534.ZIndex = 1
+											v534.Face = v533
+											v534.Parent = v522
+
+											local v535 = v1.Instance.new("Texture")
+
+											v535.Name = "Skin Texture"
+											v535.Texture = v528
+											v535.Color3 = v529
+											v535.Transparency = v522.Transparency
+											v535.ZIndex = 2
+											v535.Face = v533
+											v535.Parent = v522
+										end
+
+										n10 += 1
+									end
+								end
+							end
+
+							return n10 > 0, n10
+						end)()
+					end
+					function t29.getEquippedGun()
+						return (function()
+							local Character = LocalPlayer.Character
+							local v539 = Character and Character:FindFirstChild("Equipped")
+							local v540 = v539 and v539:GetChildren()[1]
+
+							if v540 then
+								if v540:IsA("Tool") then
+									for _, v542 in v1.ipairs(v540:GetChildren()) do
+										if v542:IsA("Model") then
+											v540 = v542
+
+											break
+										end
+									end
+								end
+
+								if not v540 or not v540:IsA("Model") then
+									return nil
+								end
+
+								return v540
+							end
+
+							return nil
+						end)()
+					end
+					function t29.modelHasSkin(p26)
+						for _, v291 in v1.ipairs(p26:GetDescendants()) do
+							if v291:IsA("Texture") and v291.Name == "Skin Texture" then
+								return true
+							end
+						end
+
+						return false
+					end
+					function t29.reapplyIfTracked(p27)
+						if v1.typeof(p27) == "Instance" and p27:IsA("Model") then
+							local v293 = t29.byGun[p27.Name]
+
+							if v293 then
+								local v294 = t29.getSkinData(v293)
+
+								if v294 then
+									v1.pcall(function()
+										t29.applySkinManual(p27, v294)
+									end)
+								end
+
+								return
+							end
+
+							return
+						end
+					end
+					function t29.installHook()
+						return (function()
+							if t29.hooked then
+								return true
+							end
+
+							local v545 = rr()
+
+							if v545 then
+								local v546, v547 = v1.pcall(function()
+									return (function()
+										return v545.require("Libraries", "GunBuilder")
+									end)()
+								end)
+
+								if v546 and v1.type(v547) == "table" then
+									t29.builder = v547
+									t29._orig = {
+										CleanSkin = v547.CleanSkin,
+										Build = v547.Build,
+										ApplySkin = v547.ApplySkin,
+									}
+
+									function v547.CleanSkin(p32, p33, ...)
+										return (function(...)
+											local t30 = { v1.pcall(t29._orig.CleanSkin, p32, p33, ...) }
+
+											t29.reapplyIfTracked(p33)
+
+											return v1.table.unpack(t30, 2)
+										end)(...)
+									end
+									function v547.Build(p36, p37, ...)
+										local t31 = { v1.pcall(t29._orig.Build, p36, p37, ...) }
+
+										t29.reapplyIfTracked(p37)
+
+										return v1.table.unpack(t31, 2)
+									end
+									function v547.ApplySkin(p38, p39, p40, ...)
+										if v1.pcall(t29._orig.ApplySkin, p38, p39, p40, ...) then
+											return
+										end
+
+										local v1120 = t29.getSkinData(p40)
+
+										if not v1120 then
+											return
+										end
+
+										v1.pcall(function()
+											t29.applySkinManual(p39, v1120)
+										end)
+									end
+
+									t29.hooked = true
+
+									return true
+								end
+
+								return false, "GunBuilder not found"
+							end
+
+							return false, "Framework not loaded"
+						end)()
+					end
+					function t29.removeHook()
+						if t29.hooked and (t29.builder and t29._orig) then
+							t29.builder.CleanSkin = t29._orig.CleanSkin
+							t29.builder.Build = t29._orig.Build
+							t29.builder.ApplySkin = t29._orig.ApplySkin
+						end
+
+						t29.hooked = false
+					end
+					function t29.clearAll()
+						local n11 = 0
+
+						for _ in v1.pairs(t29.byGun) do
+							n11 += 1
+						end
+
+						local v297 = t29.getEquippedGun()
+
+						if v297 then
+							v1.pcall(function()
+								t29.cleanSkinManual(v297)
+							end)
+						end
+
+						t29.byGun = {}
+
+						return n11
+					end
+					function ap()
+						return (function()
+							local v550 = rr()
+
+							if not v550 then
+								if not u24 then
+									return
+								end
+								u24:Notify({
+									Title = "Error",
+									Content = "No Bullet Drop: Framework not loaded",
+									Duration = 3,
+								})
+
+								return
+							end
+
+							local v551 = v550.require("Configs", "Globals")
+
+							if not v551 then
+								if u24 then
+									u24:Notify({
+										Title = "Error",
+										Content = "No Bullet Drop: Globals not found",
+										Duration = 3,
+									})
+								end
+
+								return
+							end
+
+							if u103 == nil then
+								u103 = v551.ProjectileGravity
+							end
+
+							v551.ProjectileGravity = if not dy("NoBulletDrop") then u103 else 0
+						end)()
+					end
+					local u134 = true
+
+					local function lw()
+						return (function()
+							if u134 then
+								u134 = false
+								t17 = {}
+
+								for _, v555 in v41:GetChildren() do
+									if v555:IsA("Frame") and v555.Name == "Frame" then
+										local v556 = v555:FindFirstChild("NameButton")
+											and (
+												v555.NameButton.FindFirstChild(v555.NameButton, "NameLabelBin")
+												and v555.NameButton.NameLabelBin.FindFirstChild(v555.NameButton.NameLabelBin, "NameLabel")
+											)
+
+										if v556 then
+											local v557 = v28:FindFirstChild(v556.Text)
+
+											if v557 then
+												t17[v557] = true
+											end
+										end
+									end
+								end
+
+								return
+							end
+						end)()
+					end
+
+					function qr(p45)
+						if u134 then
+							lw()
+						end
+
+						return t17[p45] or false
+					end
+					function xk(p46)
+						return (function()
+							if not p46 then
+								return nil
+							end
+
+							local v560 = t6[p46]
+
+							if not v560 or not v560.Parent then
+								v560 = p46:FindFirstChild("EquippedItem", true)
+								t6[p46] = v560
+								t7[p46] = nil
+
+								if not v560 then
+									return nil
+								end
+							end
+
+							local v561 = t7[p46]
+							local Value = v560.Value
+
+							if not v561 or Value ~= v561.val then
+								local v563, v564 = v1.pcall(v29.JSONDecode, v29, Value)
+								local v565 = v563
+										and (v1.type(v564) == "table" and (v1.type(v564.ItemName) == "string" and (v564.ItemName ~= "" and v564.ItemName)))
+									or nil
+
+								t7[p46] = {
+									val = Value,
+									name = v565,
+								}
+
+								return v565
+							end
+
+							return v561.name
+						end)()
+					end
+
+					v1.table.insert(
+						t16,
+						v41.ChildAdded.Connect(v41.ChildAdded, function(p49)
+							u134 = true
+
+							if not p49:IsA("Frame") then
+								return
+							end
+
+							v1.task.delay(0.1, function()
+								u134 = true
+							end)
+						end)
+					)
+					v1.table.insert(
+						t16,
+						v41.ChildRemoved.Connect(v41.ChildRemoved, function()
+							u134 = true
+						end)
+					)
+
+					local function ze()
+						local MouseSensitivity = v33.MouseSensitivity
+
+						if v1.typeof(MouseSensitivity) == "number" and not (MouseSensitivity <= 0) then
+							return t24.LOCK_BASE_MOUSE_DELTA * (t24.LOCK_REFERENCE_ROBLOX_SENS / MouseSensitivity)
+						end
+
+						return t24.LOCK_BASE_MOUSE_DELTA
+					end
+
+					function yb()
+						if not u93 then
+							u92 = v32.MouseDeltaSensitivity
+							u93 = true
+						end
+
+						local v302 = ze()
+
+						if v302 ~= v32.MouseDeltaSensitivity then
+							v32.MouseDeltaSensitivity = v302
+						end
+					end
+
+					local function Ze()
+						if not u93 then
+							return
+						end
+
+						if u92 ~= nil and v32.MouseDeltaSensitivity ~= u92 then
+							v32.MouseDeltaSensitivity = u92
+						end
+
+						u92 = nil
+						u93 = false
+					end
+
+					function Ch()
+						u94 = nil
+						u95 = nil
+						Ze()
+					end
+					function Nk()
+						local FieldOfView = CurrentCamera.FieldOfView
+
+						if FieldOfView > 33 then
+							return t24.BASE_CENTER_EPSILON + (FieldOfView - 33) * 0.02
+						end
+
+						return t24.BASE_CENTER_EPSILON
+					end
+
+					local function yd()
+						local v304 = u36 and u36:FindFirstChild("Equipped")
+
+						if not v304 then
+							return nil
+						end
+
+						return v304:GetChildren()[1]
+					end
+
+					function Sh()
+						return yd() ~= nil
+					end
+					function El()
+						local v305 = yd()
+
+						if not v305 then
+							return t24.DEFAULT_PREDICTION_VELOCITY
+						end
+
+						local v306 = t27[v305.Name]
+
+						if v1.type(v306) == "number" and v306 > 0 then
+							return v306
+						end
+
+						return t24.DEFAULT_PREDICTION_VELOCITY
+					end
+					function Jl(p50)
+						if p50 then
+							v1.pcall(function()
+								p50.Visible = false
+							end)
+							v1.pcall(function()
+								p50:Remove()
+							end)
+						end
+					end
+					function Fu(p51, p52, p53)
+						return (function()
+							local v568 = t3[p51]
+
+							if not v568 or v568.character ~= p52 then
+								local v569 = p52:FindFirstChild("HumanoidRootPart")
+								local v570 = p52:FindFirstChild("Head")
+
+								if not v569 or not v570 then
+									t3[p51] = nil
+
+									return nil
+								end
+
+								local t32 = nil
+
+								if p53 then
+									t32 = {}
+
+									for _, v573 in v1.ipairs(t26) do
+										t32[v573[1]] = p52:FindFirstChild(v573[1])
+										t32[v573[2]] = p52:FindFirstChild(v573[2])
+									end
+								end
+
+								local t33 = {
+									character = p52,
+									root = v569,
+									head = v570,
+									leftFoot = p52:FindFirstChild("LeftFoot"),
+									equipped = p52:FindFirstChild("Equipped"),
+									skeleton = t32,
+								}
+
+								t3[p51] = t33
+
+								return t33
+							end
+
+							if p53 and not v568.skeleton then
+								local t34 = {}
+
+								for _, v577 in v1.ipairs(t26) do
+									t34[v577[1]] = p52:FindFirstChild(v577[1])
+									t34[v577[2]] = p52:FindFirstChild(v577[2])
+								end
+
+								v568.skeleton = t34
+							end
+
+							return v568
+						end)()
+					end
+					function Ku(p56)
+						return (function()
+							local v580 = v1.Drawing.new("Square")
+
+							v580.Thickness = 2
+							v580.Transparency = 1
+							v580.Filled = false
+							v580.Visible = false
+							v580.Color = v1.Color3.fromRGB(0, 0, 0)
+
+							local v581 = v1.Drawing.new("Square")
+
+							v581.Thickness = 1
+							v581.Transparency = 1
+							v581.Filled = false
+							v581.Visible = false
+
+							local v582 = v1.Drawing.new("Text")
+
+							v582.Font = 2
+							v582.Center = true
+							v582.Outline = false
+							v582.Visible = false
+
+							if p56 then
+								v582.Text = p56.Name
+							end
+
+							local v583 = v1.Drawing.new("Text")
+
+							v583.Font = 2
+							v583.Center = true
+							v583.Outline = false
+							v583.Visible = false
+
+							local v584 = v1.Drawing.new("Text")
+
+							v584.Font = 2
+							v584.Transparency = 0.6
+							v584.Center = true
+							v584.Outline = false
+							v584.Visible = false
+							v584.Color = v1.Color3.fromRGB(255, 255, 255)
+
+							local v585 = v1.Drawing.new("Text")
+
+							v585.Font = 2
+							v585.Transparency = 0.6
+							v585.Center = true
+							v585.Outline = false
+							v585.Visible = false
+							v585.Color = v113
+							v585.Text = "[Party]"
+
+							local v586 = v1.Drawing.new("Line")
+
+							v586.Thickness = 1
+							v586.Transparency = 1
+							v586.Visible = false
+
+							local v587 = v1.Drawing.new("Line")
+
+							v587.Thickness = 1
+							v587.Transparency = 1
+							v587.Visible = false
+							v587.Color = v1.Color3.fromRGB(255, 0, 0)
+
+							local t35 = {}
+
+							for _, v590 in v1.ipairs(t26) do
+								local v591 = v1.Drawing.new("Line")
+
+								v591.Thickness = 1
+								v591.Transparency = 0.5
+								v591.Visible = false
+								v591.Color = v1.Color3.fromRGB(255, 255, 255)
+								v1.table.insert(t35, {
+									line = v591,
+									from = v590[1],
+									to = v590[2],
+								})
+							end
+
+							return {
+								box = v581,
+								boxOutline = v580,
+								name = v582,
+								dist = v583,
+								equipped = v584,
+								party = v585,
+								lookLine = v586,
+								tracer = v587,
+								skeleton = t35,
+								highlight = nil,
+							}
+						end)()
+					end
+					function Rg(p59)
+						local v313 = v88:PointToObjectSpace(p59)
+
+						return v1.Vector2.new(v313.X / v89.X, v313.Z / v89.Z)
+					end
+				end
+
+				local function ks(p60, p61, p62, p63)
+					return (function()
+						local v594 = v1.Instance.new("TextLabel", p60)
+
+						v594.Name = "Name"
+						v594.Size = v1.UDim2.new(0, 120, 0, 14)
+						v594.Position = v1.UDim2.new(0.5, 0, 0, -2)
+						v594.AnchorPoint = v1.Vector2.new(0.5, 1)
+						v594.BackgroundTransparency = 1
+						v594.Text = p61
+						v594.TextColor3 = p62
+						v594.TextStrokeTransparency = 0.7
+						v594.TextStrokeColor3 = v1.Color3.new(0, 0, 0)
+						v594.Font = v1.Enum.Font.SourceSansBold
+						v594.TextSize = 12
+						v594.ZIndex = p63
+					end)()
+				end
+
+				local v151 = v1.UDim2.new(0, 31, 0, 40)
+				local v152 = v1.Vector2.new(0.5, 1)
+
+				function Ep(p66)
+					return (function()
+						if t4[p66] then
+							t4[p66].Destroy(t4[p66])
+						end
+
+						local v597 = LocalMarker:Clone()
+
+						v597.Name = "Player_" .. p66.Name
+						v597.Image = "rbxassetid://138308183039161"
+						v597.ImageColor3 = v1.Color3.new(1, 1, 1)
+						v597.Size = v151
+						v597.AnchorPoint = v152
+						v597.ZIndex = 54
+						ks(v597, p66.Name, v1.Color3.new(1, 1, 1), 55)
+
+						local v598 = v1.Instance.new("TextLabel", v597)
+
+						v598.Name = "DistLabel"
+						v598.Size = v1.UDim2.new(0, 120, 0, 13)
+						v598.AnchorPoint = v1.Vector2.new(0.5, 1)
+						v598.Position = v1.UDim2.new(0.5, 0, 0, -2)
+						v598.BackgroundTransparency = 1
+						v598.TextColor3 = v1.Color3.new(1, 1, 1)
+						v598.TextStrokeTransparency = 0.7
+						v598.TextStrokeColor3 = v1.Color3.new(0, 0, 0)
+						v598.Font = v1.Enum.Font.SourceSansBold
+						v598.TextSize = 11
+						v598.ZIndex = 55
+						v598.Visible = false
+
+						local v599 = v1.Instance.new("TextLabel", v597)
+
+						v599.Name = "WeaponLabel"
+						v599.Size = v1.UDim2.new(0, 120, 0, 12)
+						v599.AnchorPoint = v1.Vector2.new(0.5, 1)
+						v599.Position = v1.UDim2.new(0.5, 0, 0, -2)
+						v599.BackgroundTransparency = 1
+						v599.TextColor3 = v1.Color3.new(0.65, 0.65, 1)
+						v599.TextStrokeTransparency = 0.8
+						v599.TextStrokeColor3 = v1.Color3.new(0, 0, 0)
+						v599.Font = v1.Enum.Font.SourceSansBold
+						v599.TextSize = 11
+						v599.ZIndex = 55
+						v599.Visible = false
+						v597.Parent = v45
+						t4[p66] = v597
+					end)()
+				end
+				function Km(p69)
+					return (function()
+						if t5[p69] then
+							t5[p69].Destroy(t5[p69])
+						end
+
+						local v602 = LocalMarker:Clone()
+
+						v602.Name = "Vehicle_" .. p69.Name
+						v602.Image = "rbxassetid://91229233187034"
+						v602.ImageColor3 = v1.Color3.new(1, 1, 1)
+						v602.Size = v151
+						v602.AnchorPoint = v152
+						v602.ZIndex = 52
+						ks(v602, p69.Name, v1.Color3.new(1, 1, 1), 53)
+
+						local v603 = v1.Instance.new("TextLabel", v602)
+
+						v603.Name = "DistLabel"
+						v603.Size = v1.UDim2.new(0, 120, 0, 13)
+						v603.AnchorPoint = v1.Vector2.new(0.5, 1)
+						v603.Position = v1.UDim2.new(0.5, 0, 0, -2)
+						v603.BackgroundTransparency = 1
+						v603.TextColor3 = v1.Color3.new(1, 1, 1)
+						v603.TextStrokeTransparency = 0.7
+						v603.TextStrokeColor3 = v1.Color3.new(0, 0, 0)
+						v603.Font = v1.Enum.Font.SourceSansBold
+						v603.TextSize = 11
+						v603.ZIndex = 53
+						v603.Visible = false
+						v602.Parent = v45
+						t5[p69] = v602
+					end)()
+				end
+				function Pg(p72)
+					return (function()
+						local v606 = t2[p72]
+
+						if v606 then
+							v606.box.Visible = false
+							v606.name.Visible = false
+							v606.dist.Visible = false
+							v606.equipped.Visible = false
+							v606.party.Visible = false
+							v606.lookLine.Visible = false
+
+							if v606.boxOutline then
+								v606.boxOutline.Visible = false
+							end
+
+							if v606.highlight then
+								v606.highlight.Enabled = false
+							end
+
+							if v606.tracer then
+								v606.tracer.Visible = false
+							end
+
+							if not v606.skeleton then
+								return
+							end
+
+							for _, v608 in v1.ipairs(v606.skeleton) do
+								v608.line.Visible = false
+							end
+
+							return
+						end
+					end)()
+				end
+				function ux(p75)
+					return (function()
+						return p75 and (p75.Parent == v1.workspace.Characters and (p75:FindFirstChild("HumanoidRootPart") and p75:FindFirstChild("Head")))
+					end)()
+				end
+
+				local v157 = v1.Color3.fromRGB(255, 130, 130)
+				local v158 = v1.Color3.fromRGB(255, 225, 140)
+				local v159 = v1.Color3.fromRGB(140, 235, 160)
+
+				function nx(p78)
+					return (function()
+						local v613 = v1.math.clamp(p78 / 2000, 0, 1)
+
+						if not (v613 < 0.5) then
+							return v158:Lerp(v159, (v613 - 0.5) * 2)
+						end
+
+						return v157:Lerp(v158, v613 * 2)
+					end)()
+				end
+				function Lc(p81)
+					return t19[p81]
+				end
+				function Zr()
+					return v1.Vector2.new(n6 * 0.5, n7 * 0.5)
+				end
+				function vb(p82)
+					local v325, v326 = ru(p82)
+
+					if not v326 then
+						return nil, nil
+					end
+
+					return v1.Vector2.new(v325.X - n6 * 0.5, v325.Y - n7 * 0.5), v325
+				end
+
+				local function xt(p83, p84, p85)
+					if dy("WallCheck") then
+						local CFramePosition = CurrentCamera.CFrame.Position
+						local v331 = p85 or p83.Position
+						local v332 = v1.workspace.Raycast(v1.workspace, CFramePosition, v331 - CFramePosition, v38)
+
+						return v332 and (v332.Instance and v332.Instance.IsDescendantOf(v332.Instance, p84))
+					end
+
+					return true
+				end
+
+				function Ki(p86)
+					return (function()
+						local v616 = dy("AimPart") or "Head"
+
+						if v616 == "Random" then
+							v616 = t25[p86]
+
+							if not v616 then
+								local t36 = {
+									"Head",
+									"UpperTorso",
+									"Legs",
+								}
+
+								v616 = t36[v1.math.random(1, #t36)]
+								t25[p86] = v616
+							end
+						end
+
+						if v616 ~= "Head" then
+							if v616 ~= "UpperTorso" then
+								if v616 ~= "Legs" then
+									local v618 = p86:FindFirstChild("Head")
+
+									return v618, v618 and v618.Position
+								end
+
+								local v619 = p86:FindFirstChild("LeftUpperLeg") or p86:FindFirstChild("LeftLeg")
+								local v620 = p86:FindFirstChild("RightUpperLeg") or p86:FindFirstChild("RightLeg")
+								local v621 = p86:FindFirstChild("LowerTorso") or p86:FindFirstChild("HumanoidRootPart")
+
+								if not v619 or not v620 then
+									if v619 then
+										return v621, v619.Position
+									end
+
+									if v620 then
+										return v621, v620.Position
+									end
+
+									return v621, v621 and v621.Position
+								end
+
+								return v621, (v619.Position + v620.Position) * 0.5
+							end
+
+							local v622 = p86:FindFirstChild("UpperTorso")
+
+							return v622, v622 and v622.Position
+						end
+
+						local v623 = p86:FindFirstChild("Head")
+
+						return v623, v623 and v623.Position
+					end)()
+				end
+
+				local function Aj(p89)
+					if p89 and p89.Parent then
+						local p89Parent = p89.Parent
+
+						if ux(p89Parent) then
+							local v336 = v28:GetPlayerFromCharacter(p89Parent)
+
+							if v336 and qr(v336) then
+								return false
+							end
+
+							local HumanoidRootPart = p89Parent:FindFirstChild("HumanoidRootPart")
+
+							if HumanoidRootPart and u37 then
+								if (HumanoidRootPart.Position - u37.Position).Magnitude > (dy("AimDist") or 1200) then
+									return false
+								end
+
+								local _, v339 = Ki(p89Parent)
+
+								if v339 then
+									if not xt(p89, p89Parent, v339) then
+										return false
+									end
+
+									if not vb(v339) then
+										return false
+									end
+
+									return true
+								end
+
+								return false
+							end
+
+							return false
+						end
+
+						return false
+					end
+
+					return false
+				end
+				local function _t()
+					local v340 = nil
+					local v341 = if not dy("Aim") and not dy("SilentAim") then v1.math.huge else dy("FOV") or 150
+
+					u95 = nil
+
+					if u37 then
+						for _, v343 in v1.ipairs(t18) do
+							local Character = v343.Character
+
+							if
+								v343 ~= LocalPlayer
+								and ux(Character)
+								and not qr(v343)
+								and not ((Character.HumanoidRootPart.Position - u37.Position).Magnitude > (dy("AimDist") or 1200))
+							then
+								local v345, v346 = Ki(Character)
+
+								if v345 and v346 then
+									local v347 = vb(v346)
+
+									if v347 then
+										local Magnitude = v347.Magnitude
+
+										if not (v341 <= Magnitude) and xt(v345, Character, v346) then
+											v340 = v345
+											v341 = Magnitude
+											u95 = v346
+										end
+									end
+								end
+							end
+						end
+
+						return v340
+					end
+
+					return nil
+				end
+
+				function xa()
+					local v349 = nil
+					local v350 = nil
+					local v351 = nil
+					local huge = v1.math.huge
+					local v353 = v32:GetMouseLocation()
+					local v354 = dy("FOV") or 150
+					local v355 = dy("AimDist") or 1200
+					local Position = u122.Position
+
+					for _, v358 in v1.ipairs(t18) do
+						if v358 ~= LocalPlayer then
+							local Character = v358.Character
+
+							if ux(Character) and not qr(v358) then
+								local v360, v361 = Ki(Character)
+								local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
+								local Humanoid = Character:FindFirstChild("Humanoid")
+
+								if v360 and HumanoidRootPart and Humanoid and Humanoid.Health > 0 then
+									local v364, v365 = ru(v361 or v360.Position)
+
+									if v365 then
+										local Magnitude = (v1.Vector2.new(v364.X, v364.Y) - v353).Magnitude
+
+										if not (v354 < Magnitude) then
+											local Magnitude2 = (HumanoidRootPart.Position - Position).Magnitude
+
+											if not (v355 < Magnitude2) then
+												local v368 = Magnitude2 / 1000 * 0.7 + Magnitude / v354 * 0.3
+
+												if v368 < huge then
+													huge = v368
+													v349 = v360
+													v350 = HumanoidRootPart
+													v351 = v361 or v360.Position
+												end
+											end
+										end
+									end
+								end
+							end
+						end
+					end
+
+					return v349, v350, v351
+				end
+
+				local function kb(p90, p91)
+					local v371 = v1.Instance.new("Attachment")
+
+					v371.WorldPosition = p90
+					v371.Parent = v128
+
+					local v372 = v1.Instance.new("Attachment")
+
+					v372.WorldPosition = p91
+					v372.Parent = v128
+
+					local v373 = v1.Instance.new("Beam")
+
+					v373.Attachment0 = v371
+					v373.Attachment1 = v372
+					v373.Color = v1.ColorSequence.new(dy("TracerColor") or v113)
+					v373.Width0 = 0.25
+					v373.Width1 = 0.25
+					v373.Transparency = v1.NumberSequence.new(dy("TracerTransparency") or 0.5)
+					v373.LightEmission = 1
+					v373.FaceCamera = true
+					v373.Parent = v128
+					v1.task.delay(0.6, function()
+						v1.pcall(function()
+							v373:Destroy()
+							v371:Destroy()
+							v372:Destroy()
+						end)
+					end)
+				end
+
+				function Tn()
+					return (function()
+						if not u99 then
+							local v626 = rr()
+
+							if not v626 then
+								if u24 then
+									u24:Notify({
+										Title = "Error",
+										Content = "Weapon hook: Framework not found",
+										Duration = 5,
+									})
+								end
+
+								return
+							end
+
+							local v627 = v626.Libraries and v626.Libraries.Bullets
+
+							if v627 and v627.Fire then
+								local Fire = v627.Fire
+
+								u102 = Fire
+								v1.pcall(function()
+									return (function()
+										local v1229, v1230 = v1.debug.getupvalue(Fire, 3)
+										local v1231, v1232 = v1.debug.getupvalue(Fire, 6)
+
+										u100 = v1.typeof(v1229) == "function" and v1229 or v1230
+										u101 = v1.typeof(v1231) == "function" and v1231 or v1232
+									end)()
+								end)
+
+								local function v629(p96, p97, p98)
+									local v1137 = u105
+
+									if not u105 then
+										if not dy("NoSpread") then
+											if v1.typeof(u100) == "function" then
+												return u100(p96, p97, p98)
+											end
+
+											return p97.Unit
+										end
+
+										return p97.Unit
+									end
+
+									u105 = nil
+
+									return v1137
+								end
+								local function v630(...)
+									return (function(...)
+										if dy("NoRecoil") then
+											return v1.Vector2.new(0, 0), 0, 0, 0, 0
+										end
+
+										if v1.typeof(u101) == "function" then
+											return u101(...)
+										end
+
+										return v1.Vector2.new(0, 0), 0, 0, 0, 0
+									end)(...)
+								end
+
+								v1.pcall(function()
+									v1.debug.setupvalue(Fire, 3, v629)
+								end)
+								v1.pcall(function()
+									v1.debug.setupvalue(Fire, 6, v630)
+								end)
+
+								function v627.Fire(p101, ...)
+									return (function(...)
+										local t37 = { ... }
+										local v1238 = dy("SilentAim")
+											and (u98 and (u97 and u96))
+											and not ((dy("SilentHitChance") or 100) < v1.math.random(1, 100))
+										local v1239 = v1.typeof(t37[4]) == "Vector3" and t37[4] or CurrentCamera.CFrame.Position
+										local v1240 = nil
+
+										if not v1238 then
+											local v1241 = t37[5]
+
+											if v1.typeof(v1241) == "Vector3" then
+												v1240 = v1239 + v1241.Unit * 2000
+											end
+										else
+											v1240 = u98
+
+											if dy("Prediction") then
+												local v1242 = El()
+												local Magnitude = (u98 - v1239).Magnitude
+												local v1244 = Magnitude / v1242
+
+												if Magnitude > 35 then
+													v1240 = u98 + u97.AssemblyLinearVelocity * v1244 * 1.05
+												end
+											end
+
+											local Unit = (v1240 - v1239).Unit
+
+											t37[5] = Unit
+											u105 = Unit
+										end
+
+										if dy("Tracers") and v1240 then
+											kb(v1239, v1240)
+										end
+
+										if dy("AimPart") == "Random" then
+											if u94 and u94.Parent then
+												t25[u94.Parent] = nil
+											end
+
+											if u96 and u96.Parent then
+												t25[u96.Parent] = nil
+											end
+										end
+
+										return Fire(p101, v1.table.unpack(t37))
+									end)(...)
+								end
+
+								u99 = true
+								ap()
+
+								return
+							end
+
+							if u24 then
+								u24:Notify({
+									Title = "Error",
+									Content = "Bullets not found",
+									Duration = 5,
+								})
+							end
+
+							return
+						end
+					end)()
+				end
+				function Po()
+					if u99 then
+						u105 = nil
+
+						local v374 = rr()
+
+						if v374 then
+							local v375 = v374.Libraries and v374.Libraries.Bullets
+
+							if v375 and u102 then
+								v375.Fire = u102
+							end
+
+							v1.pcall(function()
+								if u100 then
+									v1.debug.setupvalue(u102, 3, u100)
+								end
+
+								if u101 then
+									v1.debug.setupvalue(u102, 6, u101)
+								end
+							end)
+
+							local v376 = v374.require("Configs", "Globals")
+
+							if v376 and u103 ~= nil then
+								v376.ProjectileGravity = u103
+							end
+						end
+
+						u99 = false
+
+						return
+					end
+				end
+				function Mq()
+					return (function()
+						if not u109 then
+							local v633 = rr()
+
+							if not v633 then
+								if not u24 then
+									return
+								end
+								u24:Notify({
+									Title = "Error",
+									Content = "Wallbang: Framework not found",
+									Duration = 5,
+								})
+
+								return
+							end
+
+							local v634 = v633.Libraries and v633.Libraries.Raycasting
+
+							if v634 and v634.BulletCastLight and v634.CastWithIgnoreList then
+								u110 = v634.BulletCastLight
+								u111 = v634.CastWithWhiteList
+
+								local t38 = {}
+								local v636 = v1.RaycastParams.new()
+
+								v636.FilterType = v1.Enum.RaycastFilterType.Whitelist
+								v636.IgnoreWater = true
+
+								local LocalPlayer2 = v1.game.Players.LocalPlayer
+								local t39 = {}
+								local t40 = {}
+								local u640 = true
+
+								local function vx(p106)
+									local v1141 = t40[p106]
+
+									if v1141 then
+										for _, v1143 in v1.ipairs(v1141) do
+											v1.pcall(function()
+												v1143:Disconnect()
+											end)
+										end
+									end
+
+									t40[p106] = nil
+									t39[p106] = nil
+									u640 = true
+								end
+								local function Ct(p107)
+									return (function()
+										if p107 then
+											local t41 = {}
+
+											for _, v1250 in v1.ipairs(p107:GetDescendants()) do
+												if v1250:IsA("BasePart") then
+													t41[v1250] = true
+												end
+											end
+
+											t39[p107] = t41
+											u640 = true
+											t40[p107] = {
+												p107.DescendantAdded.Connect(p107.DescendantAdded, function(p110)
+													if p110:IsA("BasePart") and t39[p107] then
+														t39[p107][p110] = true
+														u640 = true
+													end
+												end),
+												p107.DescendantRemoving.Connect(p107.DescendantRemoving, function(p111)
+													local v1302 = t39[p107]
+
+													if v1302 and v1302[p111] then
+														v1302[p111] = nil
+														u640 = true
+													end
+												end),
+											}
+
+											return
+										end
+									end)()
+								end
+								local function yv(p112)
+									if p112 ~= LocalPlayer2 then
+										v1.table.insert(t16, p112.CharacterAdded.Connect(p112.CharacterAdded, Ct))
+										v1.table.insert(t16, p112.CharacterRemoving.Connect(p112.CharacterRemoving, vx))
+
+										if p112.Character then
+											Ct(p112.Character)
+										end
+
+										return
+									end
+								end
+
+								for _, v645 in v1.ipairs(v1.game.Players.GetPlayers(v1.game.Players)) do
+									yv(v645)
+								end
+
+								v1.table.insert(t16, v1.game.Players.PlayerAdded.Connect(v1.game.Players.PlayerAdded, yv))
+
+								local function dr()
+									return (function()
+										if u640 then
+											u640 = false
+
+											local t42 = {}
+
+											for v1254, v1255 in v1.pairs(t39) do
+												if not v1254.Parent then
+													t39[v1254] = nil
+												else
+													for v1256 in v1.pairs(v1255) do
+														if v1256.Parent then
+															t42[#t42 + 1] = v1256
+														end
+													end
+												end
+											end
+
+											t38 = t42
+											v636.FilterDescendantsInstances = t42
+
+											return
+										end
+									end)()
+								end
+
+								local t43 = {
+									"Head",
+									"UpperTorso",
+									"LowerTorso",
+								}
+								local v648 = v1.RaycastParams.new()
+
+								v648.FilterType = v1.Enum.RaycastFilterType.Whitelist
+								v648.IgnoreWater = true
+
+								local function iu(...)
+									local t44 = { ... }
+									local v1147 = if v1.typeof(t44[1]) ~= "table" or not t44[1].BulletCastLight then t44[1] else t44[2]
+									local Origin = nil
+									local Direction = nil
+
+									if v1.typeof(v1147) ~= "Ray" then
+										if v1.typeof(v1147) == "table" and v1147.Origin and v1147.Direction then
+											Origin = v1147.Origin
+											Direction = v1147.Direction
+										end
+									else
+										Origin = v1147.Origin
+										Direction = v1147.Direction
+									end
+
+									if not Origin or not Direction then
+										return
+									end
+
+									local v1150 = LocalPlayer2 and LocalPlayer2.Character
+
+									dr()
+
+									if #t38 ~= 0 then
+										local v1151 = v1.workspace.Raycast(v1.workspace, Origin, Direction, v636)
+
+										if not v1151 then
+											return
+										end
+
+										local Instance = v1151.Instance
+
+										if not v1150 or not Instance:IsDescendantOf(v1150) then
+											local v1153 = nil
+
+											if v634.IsHitCharacter then
+												local v1154, v1155 = v1.pcall(v634.IsHitCharacter, v634, Instance)
+
+												if v1154 and v1155 then
+													v1153 = v1155
+												end
+											end
+
+											if not v1153 and v634.IsHitZombie then
+												local v1156, v1157 = v1.pcall(v634.IsHitZombie, v634, Instance)
+
+												if v1156 and v1157 then
+													v1153 = v1157
+												end
+											end
+
+											if v1153 then
+												local t45 = {}
+
+												for _, v1160 in v1.ipairs(t43) do
+													local v1161 = v1153:FindFirstChild(v1160)
+
+													if v1161 then
+														t45[#t45 + 1] = v1161
+													end
+												end
+
+												if #t45 > 0 then
+													local Unit = (Origin - v1151.Position).Unit
+
+													if Unit.Magnitude > 0 then
+														v648.FilterDescendantsInstances = t45
+
+														local v1163 = v1.workspace.Raycast(v1.workspace, v1151.Position + Unit * 0.1, -Unit * 10, v648)
+
+														if v1163 then
+															return v1163.Instance, v1163.Position, v1163.Normal
+														end
+													end
+
+													local v1164 = nil
+													local huge = v1.math.huge
+
+													for _, v1167 in v1.ipairs(t45) do
+														local Magnitude = (v1167.Position - v1151.Position).Magnitude
+
+														if Magnitude < huge then
+															huge = Magnitude
+															v1164 = v1167
+														end
+													end
+
+													if v1164 then
+														return v1164, v1164.Position, v1164.CFrame.LookVector
+													end
+												end
+											end
+
+											return Instance, v1151.Position, v1151.Normal
+										end
+
+										return
+									end
+								end
+
+								function v634.BulletCastLight(...)
+									if not dy("Wallbang") then
+										return u110(...)
+									end
+
+									local v1169, v1170, v1171, v1172 = v1.pcall(iu, ...)
+
+									if v1169 then
+										if v1170 then
+											return v1170, v1171, v1172
+										end
+
+										return u110(...)
+									end
+
+									v1.warn("[WB] BulletCastLight error:", v1170)
+
+									return u110(...)
+								end
+								function v634.CastWithWhiteList(...)
+									return (function(...)
+										if dy("Wallbang") then
+											local t46 = { ... }
+											local v1260, v1261
+
+											if v1.typeof(t46[1]) ~= "table" or not t46[1].CastWithWhiteList then
+												v1260 = t46[1]
+												v1261 = t46[2]
+											else
+												v1260 = t46[2]
+												v1261 = t46[3]
+											end
+
+											local v1262 = false
+
+											if v1.typeof(v1261) == "table" then
+												for _, v1264 in v1.ipairs(v1261) do
+													if
+														v1.typeof(v1264) == "Instance"
+														and (v1264.Name == "Head" or v1264.Name == "UpperTorso" or v1264.Name == "LowerTorso")
+													then
+														v1262 = true
+
+														break
+													end
+												end
+											end
+
+											if not v1262 then
+												return u111(...)
+											end
+											local Origin, Direction
+
+											if v1.typeof(v1260) ~= "Ray" then
+												if v1.typeof(v1260) ~= "table" or not v1260.Origin or not v1260.Direction then
+													return u111(...)
+												end
+
+												Origin = v1260.Origin
+												Direction = v1260.Direction
+											else
+												Origin = v1260.Origin
+												Direction = v1260.Direction
+											end
+
+											local t47 = {}
+
+											for _, v1269 in v1.ipairs(v1261) do
+												if v1.typeof(v1269) == "Instance" then
+													v1.table.insert(t47, v1269)
+												end
+											end
+
+											if #t47 ~= 0 then
+												local v1270 = v1.RaycastParams.new()
+
+												v1270.FilterType = v1.Enum.RaycastFilterType.Whitelist
+												v1270.FilterDescendantsInstances = t47
+												v1270.IgnoreWater = true
+
+												local v1271 = v1.workspace.Raycast(v1.workspace, Origin, Direction, v1270)
+
+												if not v1271 then
+													return nil, nil, nil
+												end
+
+												return v1271.Instance, v1271.Position, v1271.Normal
+											end
+
+											return nil, nil, nil
+										end
+
+										return u111(...)
+									end)(...)
+								end
+
+								u109 = true
+
+								return
+							end
+
+							if u24 then
+								u24:Notify({
+									Title = "Error",
+									Content = "Wallbang: Raycasting not found",
+									Duration = 5,
+								})
+							end
+
+							return
+						end
+					end)()
+				end
+				function Le()
+					if u109 then
+						local v377 = rr()
+
+						if v377 then
+							local v378 = v377.Libraries and v377.Libraries.Raycasting
+
+							if v378 then
+								if u110 then
+									v378.BulletCastLight = u110
+								end
+
+								if u111 then
+									v378.CastWithWhiteList = u111
+								end
+							end
+						end
+
+						u109 = false
+
+						return
+					end
+				end
+				function Rr()
+					if Aj(u94) then
+						return u94
+					end
+
+					u94 = _t()
+
+					return u94
+				end
+				function aw(p117, p118, p119)
+					local p117X = p117.X
+					local p117Y = p117.Y
+
+					if p119 < v1.math.abs(p118.X) and v1.math.abs(p117X) < t24.MIN_LOCK_PIXEL_STEP then
+						p117X = p118.X > 0 and t24.MIN_LOCK_PIXEL_STEP or -t24.MIN_LOCK_PIXEL_STEP
+					end
+
+					if p119 < v1.math.abs(p118.Y) and v1.math.abs(p117Y) < t24.MIN_LOCK_PIXEL_STEP then
+						p117Y = p118.Y > 0 and t24.MIN_LOCK_PIXEL_STEP or -t24.MIN_LOCK_PIXEL_STEP
+					end
+
+					local v384 = v1.math.round(p117X)
+					local v385 = v1.math.round(p117Y)
+
+					if v384 == 0 and p119 < v1.math.abs(p118.X) then
+						v384 = not (p118.X > 0) and -1 or 1
+					end
+
+					if v385 == 0 and p119 < v1.math.abs(p118.Y) then
+						v385 = not (p118.Y > 0) and -1 or 1
+					end
+
+					local v386 = v1.Vector2.new(v384, v385)
+
+					if not (v386.Magnitude > t24.MAX_MOUSE_STEP) then
+						return v386
+					end
+
+					local v387 = v386.Unit * t24.MAX_MOUSE_STEP
+
+					return (v1.Vector2.new(v1.math.round(v387.X), v1.math.round(v387.Y)))
+				end
+				local n12 = 1
+				local n13 = 0
+
+				function vk()
+					return (function()
+						local v652 = Vv()
+						local v653 = #t18
+
+						if v653 == 0 then
+							return
+						end
+
+						if v653 < n12 then
+							n12 = 1
+						end
+
+						for _ = 128, v1.math.min(4, v653) + 127 do
+							local v655 = t18[n12]
+
+							if v655 then
+								local Character = v655.Character
+								local v657 = Character and Character:FindFirstChild("Head")
+
+								if not v657 then
+									t19[v655] = nil
+								else
+									local v658 = v657.Position - v652
+									local v659 = v1.workspace.Raycast(v1.workspace, v652, v658, v38)
+
+									t19[v655] = not not v659 and (not not v659.Instance and (v659.Instance.IsDescendantOf(v659.Instance, Character) or false))
+								end
+							end
+
+							n12 += 1
+
+							if v653 < n12 then
+								n12 = 1
+							end
+						end
+
+						local v660 = v1.os.clock()
+
+						if v660 - n13 > 1 then
+							n13 = v660
+
+							local t48 = {}
+
+							for _, v663 in v1.ipairs(t18) do
+								t48[v663] = true
+							end
+
+							for v664 in v1.pairs(t19) do
+								if not t48[v664] then
+									t19[v664] = nil
+								end
+							end
+
+							for v665 in v1.pairs(t25) do
+								if not v665.Parent then
+									t25[v665] = nil
+								end
+							end
+						end
+					end)()
+				end
+
+				local function sv(p122, p123, p124, p125, p126, p127)
+					local v394 = p123[p122]
+
+					if p124 then
+						if not v394 then
+							v394 = v1.Instance.new("Highlight")
+							v394.Adornee = p122
+							v394.Parent = p122
+							p123[p122] = v394
+						end
+
+						v394.FillColor = p125
+						v394.OutlineColor = p125
+						v394.FillTransparency = p126 or 0.5
+						v394.OutlineTransparency = p127 or 0
+						v394.Enabled = true
+
+						return
+					end
+
+					if v394 then
+						v394.Enabled = false
+					end
+				end
+
+				function Iw()
+					return (function()
+						local v668 = Vv()
+						local Flags = u24.Flags
+						local v670 = dy("CorpseESP")
+						local v671 = Flags.CorpseMaxDist or 500
+						local v672 = Flags.CorpseColor or v113
+						local v673 = dy("CorpseCharms")
+						local v674 = Flags.CorpseCharmFillTrans or 0.5
+						local v675 = Flags.CorpseCharmOutlineTrans or 0
+
+						for v676, v677 in v1.pairs(t10) do
+							if not v676.Parent then
+								v677:Remove()
+								t10[v676] = nil
+
+								if t13[v676] then
+									t13[v676].Destroy(t13[v676])
+									t13[v676] = nil
+								end
+							end
+						end
+
+						if not v670 or not v75 then
+							for _, v679 in v1.pairs(t10) do
+								v679.Visible = false
+							end
+
+							for _, v681 in v1.pairs(t13) do
+								v681.Enabled = false
+							end
+						else
+							for _, v683 in v1.ipairs(v75:GetChildren()) do
+								if not v683.Name.find(v683.Name, "Infected") then
+									local v684 = v683:FindFirstChild("HumanoidRootPart") or v683.PrimaryPart
+
+									if v684 then
+										if not (v671 < (v684.Position - v668).Magnitude) then
+											if not t10[v683] then
+												local v685 = v1.Drawing.new("Text")
+
+												v685.Size = 12
+												v685.Transparency = 0.6
+												v685.Center = true
+												v685.Outline = true
+												v685.Font = 2
+												t10[v683] = v685
+											end
+
+											local v686 = t10[v683]
+
+											v686.Color = v672
+
+											local v687, v688 = ru(v684.Position + v1.Vector3.new(0, 2, 0))
+
+											v686.Text = v683.Name .. " [Corpse]"
+											v686.Position = v1.Vector2.new(v687.X, v687.Y)
+											v686.Visible = v688
+											sv(v683, t13, v673, v672, v674, v675)
+										else
+											if t10[v683] then
+												t10[v683].Visible = false
+											end
+
+											if t13[v683] then
+												t13[v683].Enabled = false
+											end
+										end
+									end
+								end
+							end
+						end
+
+						local v689 = dy("VehicleESP")
+						local v690 = Flags.VehicleMaxDist or 500
+						local v691 = Flags.VehicleColor or v113
+						local v692 = dy("VehicleCharms")
+						local v693 = Flags.VehicleCharmFillTrans or 0.5
+						local v694 = Flags.VehicleCharmOutlineTrans or 0
+
+						for v695, v696 in v1.pairs(t11) do
+							if not v695.Parent then
+								v696:Remove()
+								t11[v695] = nil
+
+								if t14[v695] then
+									t14[v695].Destroy(t14[v695])
+									t14[v695] = nil
+								end
+							end
+						end
+
+						if v689 and v73 then
+							for _, v698 in v1.ipairs(v73:GetChildren()) do
+								if v698:IsA("Model") then
+									local v699 = v698.PrimaryPart or (v698:FindFirstChild("HumanoidRootPart") or v698:FindFirstChildWhichIsA("BasePart"))
+
+									if v699 then
+										if v690 < (v699.Position - v668).Magnitude then
+											if t11[v698] then
+												t11[v698].Visible = false
+											end
+
+											if t14[v698] then
+												t14[v698].Enabled = false
+											end
+										else
+											if not t11[v698] then
+												local v700 = v1.Drawing.new("Text")
+
+												v700.Size = 12
+												v700.Transparency = 0.6
+												v700.Center = true
+												v700.Outline = true
+												v700.Font = 2
+												t11[v698] = v700
+											end
+
+											local v701 = t11[v698]
+
+											v701.Color = v691
+
+											local v702, v703 = ru(v699.Position + v1.Vector3.new(0, 3, 0))
+
+											v701.Text = v698.Name .. " [Vehicle]"
+											v701.Position = v1.Vector2.new(v702.X, v702.Y)
+											v701.Visible = v703
+											sv(v698, t14, v692, v691, v693, v694)
+										end
+									end
+								end
+							end
+						else
+							for _, v705 in v1.pairs(t11) do
+								v705.Visible = false
+							end
+
+							for _, v707 in v1.pairs(t14) do
+								v707.Enabled = false
+							end
+						end
+
+						local v708 = dy("ZombieESP")
+						local v709 = Flags.ZombieMaxDist or 500
+						local v710 = Flags.ZombieColor or v113
+						local v711 = dy("ZombieCharms")
+						local v712 = Flags.ZombieCharmFillTrans or 0.5
+						local v713 = Flags.ZombieCharmOutlineTrans or 0
+						local zombieGun = t21.zombieGun
+
+						if not zombieGun then
+							zombieGun = {}
+							t21.zombieGun = zombieGun
+						end
+
+						for v715, v716 in v1.pairs(t12) do
+							if not v715 or not v715.Parent then
+								v716:Remove()
+								t12[v715] = nil
+
+								if t15[v715] then
+									t15[v715].Destroy(t15[v715])
+									t15[v715] = nil
+								end
+							end
+						end
+
+						for v717 in v1.pairs(zombieGun) do
+							if not v717.Parent then
+								zombieGun[v717] = nil
+							end
+						end
+
+						if not v708 or not v74 then
+							for _, v719 in v1.pairs(t12) do
+								v719.Visible = false
+							end
+
+							for _, v721 in v1.pairs(t15) do
+								v721.Enabled = false
+							end
+
+							return
+						end
+
+						for _, v723 in v1.ipairs(v74:GetChildren()) do
+							if v723:IsA("Model") then
+								local v724 = zombieGun[v723]
+
+								if v724 == nil then
+									v724 = false
+
+									local Equipment = v723:FindFirstChild("Equipment")
+
+									if Equipment then
+										for _, v727 in v1.ipairs(Equipment:GetChildren()) do
+											if v727.Name.find(v727.Name, "Firearm") then
+												v724 = v727.Name.match(v727.Name, "Firearm%s*(.+)") or v727.Name
+
+												break
+											end
+										end
+									end
+
+									zombieGun[v723] = v724
+								end
+
+								if v724 then
+									local v728 = v723:FindFirstChild("HumanoidRootPart") or (v723.PrimaryPart or v723:FindFirstChild("Head"))
+
+									if v728 then
+										if v709 < (v728.Position - v668).Magnitude then
+											if t12[v723] then
+												t12[v723].Visible = false
+											end
+
+											if t15[v723] then
+												t15[v723].Enabled = false
+											end
+										else
+											if not t12[v723] then
+												local v729 = v1.Drawing.new("Text")
+
+												v729.Size = 12
+												v729.Transparency = 0.6
+												v729.Center = true
+												v729.Outline = true
+												v729.Font = 2
+												t12[v723] = v729
+											end
+
+											local v730 = t12[v723]
+
+											v730.Color = v710
+
+											local v731, v732 = ru(v728.Position + v1.Vector3.new(0, 3, 0))
+
+											v730.Text = "Zombie [" .. v724 .. "]"
+											v730.Position = v1.Vector2.new(v731.X, v731.Y)
+											v730.Visible = v732
+											sv(v723, t15, v711, v710, v712, v713)
+										end
+									end
+								end
+							end
+						end
+					end)()
+				end
+				function hf()
+					return (function()
+						if not dy("EventESP") then
+							return
+						end
+
+						for v735, v736 in v1.pairs(t9) do
+							if not v735.Parent then
+								v736:Destroy()
+								t9[v735] = nil
+							end
+						end
+
+						local MapEnabled = Map.Enabled
+
+						v1.Color3.fromRGB(255, 255, 0)
+
+						for _, v739 in v1.ipairs(t23) do
+							local cfv = v739.cfv
+
+							if cfv.Parent then
+								if not t9[cfv] then
+									local v741 = LocalMarker:Clone()
+
+									v741.Name = "Event_" .. v739.name
+									v741.Image = "rbxassetid://120126047139090"
+									v741.ImageColor3 = v1.Color3.new(1, 1, 1)
+									v741.Size = v151
+									v741.AnchorPoint = v152
+									v741.ZIndex = 56
+									ks(v741, lu(v739.name), v113, 57)
+
+									local v742 = v1.Instance.new("TextLabel", v741)
+
+									v742.Name = "DistLabel"
+									v742.Size = v1.UDim2.new(0, 120, 0, 13)
+									v742.AnchorPoint = v1.Vector2.new(0.5, 1)
+									v742.Position = v1.UDim2.new(0.5, 0, 0, -2)
+									v742.BackgroundTransparency = 1
+									v742.TextColor3 = v113
+									v742.TextStrokeTransparency = 0.7
+									v742.TextStrokeColor3 = v1.Color3.new(0, 0, 0)
+									v742.Font = v1.Enum.Font.SourceSansBold
+									v742.TextSize = 11
+									v742.ZIndex = 57
+									v742.Visible = false
+									v741.Parent = v45
+									t9[cfv] = v741
+								end
+
+								local v743 = t9[cfv]
+								local v744 = Rg(v739.pos)
+
+								v743.Position = v1.UDim2.fromScale(v744.X, v744.Y)
+								v743.Visible = MapEnabled
+
+								local Name = v743:FindFirstChild("Name")
+
+								if Name then
+									Name.Text = lu(v739.name)
+									Name.TextColor3 = v113
+								end
+							end
+						end
+					end)()
+				end
+
+				local function I()
+					local v395 = PlayerGui:FindFirstChild("MainMenu")
+
+					return v395 and v395.Enabled == true
+				end
+				local function Xx()
+					local v396 = PlayerGui:FindFirstChild("DeathScreen")
+
+					return v396 and v396.Enabled == true
+				end
+
+				function uo()
+					return I() or Xx()
+				end
+				function bf()
+					return (function()
+						v31:UnbindFromRenderStep("ApocFreecam")
+
+						local Character = LocalPlayer.Character
+
+						if Character then
+							local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
+
+							if HumanoidRootPart then
+								HumanoidRootPart.Anchored = false
+							end
+						end
+
+						u69 = nil
+					end)()
+				end
+				function dv()
+					bf()
+
+					local HumanoidRootPart = (LocalPlayer.Character or LocalPlayer.CharacterAdded.Wait(LocalPlayer.CharacterAdded)):WaitForChild(
+						"HumanoidRootPart"
+					)
+
+					if dy("AnchorCharacter") then
+						HumanoidRootPart.Anchored = true
+					end
+
+					u69 = CurrentCamera.CFrame.Position
+					CurrentCamera.CameraType = v1.Enum.CameraType.Scriptable
+					v31:BindToRenderStep("ApocFreecam", v1.Enum.RenderPriority.Camera.Value + 1, function(p134)
+						if dy("Freecam") then
+							local CurrentCameraCFrame = CurrentCamera.CFrame
+							local v752 = n2
+
+							if v32:IsKeyDown(v1.Enum.KeyCode.LeftShift) then
+								v752 = n3
+							end
+
+							local zero = v1.Vector3.zero
+
+							if v32:IsKeyDown(v1.Enum.KeyCode.W) then
+								zero += v1.Vector3.new(0, 0, 1)
+							end
+
+							if v32:IsKeyDown(v1.Enum.KeyCode.S) then
+								zero += v1.Vector3.new(0, 0, -1)
+							end
+
+							if v32:IsKeyDown(v1.Enum.KeyCode.A) then
+								zero += v1.Vector3.new(-1, 0, 0)
+							end
+
+							if v32:IsKeyDown(v1.Enum.KeyCode.D) then
+								zero += v1.Vector3.new(1, 0, 0)
+							end
+
+							if v32:IsKeyDown(v1.Enum.KeyCode.Space) then
+								zero += v1.Vector3.new(0, 1, 0)
+							end
+
+							if v32:IsKeyDown(v1.Enum.KeyCode.LeftControl) then
+								zero += v1.Vector3.new(0, -1, 0)
+							end
+
+							if zero.Magnitude > 0 then
+								local v754 = CurrentCameraCFrame.RightVector * zero.X
+									+ v1.Vector3.new(0, 1, 0) * zero.Y
+									+ CurrentCameraCFrame.LookVector * zero.Z
+
+								u69 += v754 * v752 * p134
+							end
+
+							CurrentCamera.CFrame = v1.CFrame.new(u69, u69 + CurrentCameraCFrame.LookVector)
+
+							return
+						end
+
+						bf()
+					end)
+				end
+
+				u24 = v23:CreateWindow({
+					Name = "Apoc 2 Shenanigans",
+					Version = "v2.3.0",
+					ToggleKey = v1.Enum.KeyCode.P,
+					ConfigName = "apoc2shenanigans",
+					Autoload = true,
+				})
+				u187 = nil
+
+				local v188 = u24:CreateTab({
+					Name = "Home",
+				})
+				local v189 = v188:CreateSection("Welcome")
+
+				v189:AddLabel({
+					Text = "Apocalypse Rising 2 Shenanigans v2.3.0",
+				})
+				v189:AddSeparator()
+				v189:AddLabel({
+					Text = "Default Keybinds:",
+				})
+				v189:AddLabel({
+					Text = "   ESP  =  H",
+				})
+				v189:AddLabel({
+					Text = "   Aimbot  =  J",
+				})
+				v189:AddLabel({
+					Text = "   Silent Aimbot  =  K",
+				})
+				v189:AddLabel({
+					Text = "   Freecam  =  X",
+				})
+				v189:AddLabel({
+					Text = "   Freeze Zombies  =  Z",
+				})
+				v189:AddLabel({
+					Text = "   Menu  =  P",
+				})
+				v189:AddSeparator()
+				v189:AddLabel({
+					Text = "Click the Settings cog (bottom left) for configs & menu key keybind.",
+				})
+
+				local v190 = v188:CreateSection("Credits")
+
+				v190:AddLabel({
+					Text = "A list of people and communites that have either helped me, or I've taken inspiration from!",
+				})
+				v190:AddSeparator()
+				v190:AddLabel({
+					Text = "Contributors:",
+				})
+				v190:AddLabel({
+					Text = ".v.e.n.u.s.  - Made the character & weapon chams.",
+				})
+				v190:AddSeparator()
+				v190:AddLabel({
+					Text = "Inspiration:",
+				})
+				v190:AddLabel({
+					Text = "multyHub  - Great hub with a really clean UI! I was inspired to make my own UI Library because of multyHub.",
+				})
+				v190:AddLabel({
+					Text = "Discord  - Shoutout to discord! They inspired some of the UI design.",
+				})
+				v190:AddSeparator()
+				v190:AddLabel({
+					Text = "If you believe that you should be on this list, contact me on discord and we'll sort it out.",
+				})
+				v191 = u24:CreateTab({
+					Name = "ESP",
+				})
+
+				local v192 = v191:CreateSection("ESP Features")
+
+				v192:AddToggle({
+					Name = "ESP",
+					Default = false,
+					Flag = "ESP",
+					Keybind = true,
+					DefaultKey = v1.Enum.KeyCode.H,
+					Tooltip = "Master toggle for all player ESP overlays",
+				})
+				v192:AddSeparator()
+				v192:AddToggle({
+					Name = "Show Boxes",
+					Default = true,
+					Flag = "Box",
+				})
+				v192:AddToggle({
+					Name = "Show Names",
+					Default = true,
+					Flag = "Name",
+				})
+				v192:AddToggle({
+					Name = "Show Distance",
+					Default = true,
+					Flag = "Dist",
+				})
+				v192:AddToggle({
+					Name = "Show Equipped",
+					Default = true,
+					Flag = "Equip",
+				})
+				v192:AddToggle({
+					Name = "Show Charms",
+					Default = false,
+					Flag = "Charms",
+					Tooltip = "Won't show on players far away.",
+				})
+				v192:AddToggle({
+					Name = "Show Skeleton",
+					Default = false,
+					Flag = "ShowSkeleton",
+					Tooltip = "May cause FPS to drop, use on high end devices.",
+				})
+				v192:AddToggle({
+					Name = "Show Tracers",
+					Default = false,
+					Flag = "ShowTracers",
+				})
+				v192:AddToggle({
+					Name = "Show Party Tag",
+					Default = true,
+					Flag = "PartyTag",
+				})
+				v192:AddToggle({
+					Name = "Show Look Direction",
+					Default = false,
+					Flag = "LookLine",
+					Tooltip = "Green = looking away | Yellow = looking towards your general direction | Red = looking at you",
+				})
+				v192:AddSlider({
+					Name = "Max Visible Distance",
+					Default = 2000,
+					Min = 500,
+					Max = 10000,
+					Increment = 1,
+					Flag = "MaxDist",
+				})
+
+				local v193 = v191:CreateSection("Box Settings")
+
+				v193:AddColorPicker({
+					Name = "Box Color",
+					Default = v1.Color3.fromRGB(255, 255, 255),
+					Flag = "BoxStandard",
+				})
+				v193:AddToggle({
+					Name = "Visibility Box Color",
+					Default = false,
+					Flag = "VisColor",
+					Tooltip = "Different color for visible vs hidden",
+				})
+				v193:AddColorPicker({
+					Name = "Visible / Hidden",
+					Dual = true,
+					Default = {
+						v1.Color3.fromRGB(130, 235, 150),
+						v1.Color3.fromRGB(255, 130, 130),
+					},
+					Flag = "BoxVisHidden",
+					Tooltip = "Left = visible target | Right = hidden target",
+				})
+				v193:AddSlider({
+					Name = "Box Thickness",
+					Default = 1,
+					Min = 0.1,
+					Max = 10,
+					Increment = 0.1,
+					Flag = "BoxThickness",
+				})
+				v193:AddSeparator()
+				v193:AddToggle({
+					Name = "Box Outline",
+					Default = true,
+					Flag = "BoxOutline",
+					Tooltip = "Draws a thicker square behind the box to act as its outline.",
+				})
+				v193:AddColorPicker({
+					Name = "Outline Color",
+					Default = v1.Color3.fromRGB(0, 0, 0),
+					Flag = "BoxOutlineColor",
+				})
+				v193:AddSlider({
+					Name = "Outline Thickness",
+					Default = 1.6,
+					Min = 0,
+					Max = 5,
+					Increment = 0.1,
+					Flag = "BoxOutlineThickness",
+				})
+				t49 = {
+					"UI",
+					"System",
+					"Plex",
+					"Monospace",
+				}
+
+				local v195 = v191:CreateSection("Distance Settings")
+
+				v195:AddSlider({
+					Name = "Distance Size",
+					Default = 17,
+					Min = 8,
+					Max = 32,
+					Increment = 1,
+					Flag = "DistSize",
+				})
+				v195:AddDropdown({
+					Name = "Distance Font",
+					Default = "Plex",
+					Options = t49,
+					Flag = "DistFont",
+				})
+				v195:AddToggle({
+					Name = "Dynamic Color",
+					Default = true,
+					Flag = "DistDynamicColor",
+				})
+				v195:AddColorPicker({
+					Name = "Distance Color",
+					Default = v1.Color3.fromRGB(255, 255, 255),
+					Flag = "DistColor",
+				})
+				v195:AddSlider({
+					Name = "Transparency",
+					Default = 1,
+					Min = 0,
+					Max = 1,
+					Increment = 0.01,
+					Flag = "DistTransparency",
+				})
+				v195:AddToggle({
+					Name = "Outline",
+					Default = true,
+					Flag = "DistOutline",
+				})
+				v195:AddColorPicker({
+					Name = "Outline Color",
+					Default = v1.Color3.fromRGB(0, 0, 0),
+					Flag = "DistOutlineColor",
+				})
+			end
+
+			local v196 = v191:CreateSection("Name Settings")
+
+			v196:AddSlider({
+				Name = "Name Size",
+				Default = 17,
+				Min = 8,
+				Max = 32,
+				Increment = 1,
+				Flag = "NameSize",
+			})
+			v196:AddDropdown({
+				Name = "Name Font",
+				Default = "Plex",
+				Options = t49,
+				Flag = "NameFont",
+			})
+			v196:AddColorPicker({
+				Name = "Name Color",
+				Default = v1.Color3.fromRGB(255, 255, 255),
+				Flag = "NameStandard",
+			})
+			v196:AddToggle({
+				Name = "Visibility Name Color",
+				Default = false,
+				Flag = "NameVisColor",
+				Tooltip = "Different color for visible vs hidden",
+			})
+			v196:AddColorPicker({
+				Name = "Visible / Hidden",
+				Dual = true,
+				Default = {
+					v1.Color3.fromRGB(130, 235, 150),
+					v1.Color3.fromRGB(255, 130, 130),
+				},
+				Flag = "NameVisHidden",
+				Tooltip = "Left = visible target | Right = hidden target",
+			})
+			v196:AddSlider({
+				Name = "Transparency",
+				Default = 1,
+				Min = 0,
+				Max = 1,
+				Increment = 0.01,
+				Flag = "NameTransparency",
+			})
+			v196:AddToggle({
+				Name = "Outline",
+				Default = true,
+				Flag = "NameOutline",
+			})
+			v196:AddColorPicker({
+				Name = "Outline Color",
+				Default = v1.Color3.fromRGB(0, 0, 0),
+				Flag = "NameOutlineColor",
+			})
+
+			local v197 = v191:CreateSection("Party Tag Settings")
+
+			v197:AddSlider({
+				Name = "Tag Size",
+				Default = 17,
+				Min = 8,
+				Max = 32,
+				Increment = 1,
+				Flag = "PartySize",
+			})
+			v197:AddDropdown({
+				Name = "Tag Font",
+				Default = "Plex",
+				Options = t49,
+				Flag = "PartyFont",
+			})
+			v197:AddColorPicker({
+				Name = "Tag Color",
+				Default = v1.Color3.fromRGB(255, 255, 255),
+				Flag = "PartyColor",
+			})
+			v197:AddSlider({
+				Name = "Transparency",
+				Default = 0.45,
+				Min = 0,
+				Max = 1,
+				Increment = 0.01,
+				Flag = "PartyTransparency",
+			})
+			v197:AddToggle({
+				Name = "Outline",
+				Default = true,
+				Flag = "PartyOutline",
+			})
+			v197:AddColorPicker({
+				Name = "Outline Color",
+				Default = v1.Color3.fromRGB(0, 0, 0),
+				Flag = "PartyOutlineColor",
+			})
+
+			local v198 = v191:CreateSection("Skeleton Settings")
+
+			v198:AddColorPicker({
+				Name = "Skeleton Color",
+				Default = v1.Color3.fromRGB(255, 255, 255),
+				Flag = "SkeletonColor",
+			})
+			v198:AddToggle({
+				Name = "Visibility Skeleton Color",
+				Default = false,
+				Flag = "SkelVisColor",
+				Tooltip = "Different color for visible vs hidden",
+			})
+			v198:AddColorPicker({
+				Name = "Visible / Hidden",
+				Dual = true,
+				Default = {
+					v1.Color3.fromRGB(130, 235, 150),
+					v1.Color3.fromRGB(255, 130, 130),
+				},
+				Flag = "SkelVisHidden",
+				Tooltip = "Left = visible target | Right = hidden target",
+			})
+			v198:AddSlider({
+				Name = "Thickness",
+				Default = 1,
+				Min = 0.1,
+				Max = 10,
+				Increment = 0.1,
+				Flag = "SkeletonThickness",
+			})
+
+			local v199 = v191:CreateSection("Equipped Settings")
+
+			v199:AddSlider({
+				Name = "Equipped Size",
+				Default = 17,
+				Min = 8,
+				Max = 32,
+				Increment = 1,
+				Flag = "EquipSize",
+			})
+			v199:AddDropdown({
+				Name = "Equipped Font",
+				Default = "Plex",
+				Options = t49,
+				Flag = "EquipFont",
+			})
+			v199:AddColorPicker({
+				Name = "Equipped Color",
+				Default = v1.Color3.fromRGB(255, 255, 255),
+				Flag = "EquipColor",
+			})
+			v199:AddSlider({
+				Name = "Transparency",
+				Default = 0.45,
+				Min = 0,
+				Max = 1,
+				Increment = 0.01,
+				Flag = "EquipTransparency",
+			})
+			v199:AddToggle({
+				Name = "Outline",
+				Default = true,
+				Flag = "EquipOutline",
+			})
+			v199:AddColorPicker({
+				Name = "Outline Color",
+				Default = v1.Color3.fromRGB(0, 0, 0),
+				Flag = "EquipOutlineColor",
+			})
+
+			local v200 = v191:CreateSection("Charms Settings")
+
+			v200:AddColorPicker({
+				Name = "Fill Color",
+				Default = v1.Color3.fromRGB(255, 255, 255),
+				Flag = "CharmsFill",
+			})
+			v200:AddSlider({
+				Name = "Fill Transparency",
+				Default = 0.5,
+				Min = 0,
+				Max = 1,
+				Increment = 0.01,
+				Flag = "CharmsFillTransparency",
+			})
+			v200:AddColorPicker({
+				Name = "Outline Color",
+				Default = v1.Color3.fromRGB(0, 0, 0),
+				Flag = "CharmsOutline",
+			})
+			v200:AddSlider({
+				Name = "Outline Transparency",
+				Default = 0,
+				Min = 0,
+				Max = 1,
+				Increment = 0.01,
+				Flag = "CharmsOutlineTransparency",
+			})
+			v200:AddSeparator()
+			v200:AddToggle({
+				Name = "Visibility Colors",
+				Default = false,
+				Flag = "CharmsVisColor",
+				Tooltip = "Different color for visible vs hidden",
+			})
+			v200:AddColorPicker({
+				Name = "Fill Visible / Hidden",
+				Dual = true,
+				Default = {
+					v1.Color3.fromRGB(130, 235, 150),
+					v1.Color3.fromRGB(255, 130, 130),
+				},
+				Flag = "CharmsFillVisHidden",
+				Tooltip = "Left = visible target | Right = hidden target",
+			})
+			v200:AddSeparator()
+			v200:AddToggle({
+				Name = "Always On Top",
+				Default = false,
+				Flag = "CharmsAlwaysOnTop",
+				Tooltip = "Show highlight through walls.",
+			})
+
+			local v201 = v191:CreateSection("Tracer Settings")
+
+			v201:AddColorPicker({
+				Name = "Tracer Color",
+				Default = v1.Color3.fromRGB(255, 130, 130),
+				Flag = "TracerLineColor",
+			})
+			v201:AddSlider({
+				Name = "Tracer Thickness",
+				Default = 1,
+				Min = 0.1,
+				Max = 10,
+				Increment = 0.1,
+				Flag = "TracerThickness",
+			})
+
+			local v202 = u24:CreateTab({
+				Name = "Combat",
+			})
+			local v203 = v202:CreateSection("Aimbot")
+
+			v203:AddToggle({
+				Name = "Aimbot",
+				Default = false,
+				Flag = "Aim",
+				Keybind = true,
+				DefaultKey = v1.Enum.KeyCode.J,
+				Tooltip = "Hold-to-aim camera assist (uses Aim Hold Key)",
+			})
+			v203:AddKeybind({
+				Name = "Aim Hold Key",
+				Default = v1.Enum.UserInputType.MouseButton2,
+				Flag = "NormalAimKey",
+				Tooltip = "Click and press any key or mouse button to bind.",
+				Callback = function() end,
+			})
+			v203:AddKeybind({
+				Name = "3rd-Person Aim Key",
+				Default = v1.Enum.KeyCode.LeftControl,
+				Flag = "ThirdAimKey",
+				Callback = function() end,
+			})
+
+			local v204 = v202:CreateSection("Silent Aimbot")
+
+			v204:AddToggle({
+				Name = "Silent Aimbot",
+				Default = false,
+				Flag = "SilentAim",
+				Keybind = true,
+				DefaultKey = v1.Enum.KeyCode.K,
+				Tooltip = "Redirect bullets toward target (no hold required)",
+			})
+			v204:AddSlider({
+				Name = "Hit Chance",
+				Default = 100,
+				Min = 0,
+				Max = 100,
+				Increment = 1,
+				Flag = "SilentHitChance",
+				Tooltip = "Percentage chance each bullet is redirected toward the target.",
+			})
+
+			local v205 = v202:CreateSection("Aimbot Settings")
+
+			v205:AddToggle({
+				Name = "Wall Check",
+				Default = false,
+				Flag = "WallCheck",
+				Tooltip = "Only targets players that aren't behind walls.",
+			})
+			v205:AddToggle({
+				Name = "Prediction",
+				Default = true,
+				Flag = "Prediction",
+				Tooltip = "Predicts where the target will be, and adjusts aim accordingly.",
+			})
+			v205:AddToggle({
+				Name = "Hide FOV Circle",
+				Default = false,
+				Flag = "HideFOV",
+			})
+			v205:AddColorPicker({
+				Name = "FOV Circle Color",
+				Default = v1.Color3.fromRGB(255, 255, 255),
+				Flag = "FOVColor",
+			})
+			v205:AddSlider({
+				Name = "FOV Radius",
+				Default = 150,
+				Min = 50,
+				Max = 400,
+				Increment = 1,
+				Flag = "FOV",
+			})
+			v205:AddSlider({
+				Name = "Max Distance",
+				Default = 1200,
+				Min = 100,
+				Max = 10000,
+				Increment = 1,
+				Flag = "AimDist",
+			})
+			v205:AddDropdown({
+				Name = "Aim Part",
+				Options = {
+					"Head",
+					"UpperTorso",
+					"Legs",
+					"Random",
+				},
+				Default = "Head",
+				Flag = "AimPart",
+			})
+
+			local v206 = v202:CreateSection("Hitbox Expander")
+
+			v206:AddToggle({
+				Name = "Hitbox Expander",
+				Default = false,
+				Flag = "HitboxExpand",
+				Keybind = true,
+				DefaultKey = v1.Enum.KeyCode.Unknown,
+				Tooltip = "Expands the head hitbox so bullets register easily.",
+			})
+			v206:AddSlider({
+				Name = "Hitbox Size",
+				Default = 8,
+				Min = 2,
+				Max = 12,
+				Increment = 0.5,
+				Flag = "HitboxSize",
+				Tooltip = "Size to set head hitbox to.",
+			})
+			v206:AddToggle({
+				Name = "Show Hitbox",
+				Default = true,
+				Flag = "HitboxShow",
+				Tooltip = "Visualize the expanded hitbox.",
+			})
+			v206:AddColorPicker({
+				Name = "Hitbox Color",
+				Default = v1.Color3.fromRGB(255, 0, 0),
+				Flag = "HitboxColor",
+			})
+
+			local function Qq()
+				return (function()
+					local Flags = u24.Flags
+					local HitboxExpand = Flags.HitboxExpand
+					local v759 = Flags.HitboxSize or 8
+					local v760 = v1.Vector3.new(v759, v759, v759)
+					local v761 = Flags.MaxDist or 2000
+					local HitboxShow = Flags.HitboxShow
+					local v763 = Flags.HitboxColor or v114
+					local v764 = not HitboxShow and 1 or 0.9
+					local v765 = HitboxShow and v1.Enum.Material.Neon or v1.Enum.Material.SmoothPlastic
+					local v766 = not HitboxShow and 1 or 0
+					local v767 = Vv()
+
+					if HitboxExpand then
+						for v768, v769 in v1.pairs(t8) do
+							if not v768.Parent then
+								v1.pcall(function()
+									if v769 and v769.Parent then
+										v769:Destroy()
+									end
+								end)
+								t8[v768] = nil
+							end
+						end
+
+						for _, v771 in v1.ipairs(t18) do
+							if v771 ~= LocalPlayer then
+								local Character = v771.Character
+
+								if Character then
+									local Head = Character:FindFirstChild("Head")
+
+									if Head then
+										local HeadPosition = Head.Position
+										local _, v776 = ru(HeadPosition)
+										local Magnitude = (HeadPosition - v767).Magnitude
+										local u778 = t8[Character]
+
+										if not v776 or v761 < Magnitude then
+											if u778 and u778.Parent then
+												v1.pcall(function()
+													u778:Destroy()
+												end)
+											end
+
+											t8[Character] = nil
+										elseif not u778 or not u778.Parent then
+											local v779 = v1.Instance.new("Part")
+
+											v779.Name = "HB"
+											v779.CanCollide = false
+											v779.Massless = true
+											v779.Anchored = false
+											v779.CastShadow = false
+											v779.Size = v760
+											v779.CFrame = Head.CFrame
+											v779.Transparency = v764
+											v779.Color = v763
+											v779.Material = v765
+
+											local v780 = v1.Instance.new("SpecialMesh")
+
+											v780.MeshType = v1.Enum.MeshType.Head
+											v780.Parent = v779
+
+											local v781 = v1.Instance.new("Decal")
+
+											v781.Name = "HBFace"
+											v781.Texture = "rbxasset://textures/face.png"
+											v781.Face = v1.Enum.NormalId.Front
+											v781.Transparency = v766
+											v781.Parent = v779
+											v779.Parent = Character
+
+											local v782 = v1.Instance.new("WeldConstraint")
+
+											v782.Part0 = Head
+											v782.Part1 = v779
+											v782.Parent = v779
+											t8[Character] = v779
+										else
+											if v760 ~= u778.Size then
+												u778.Size = v760
+											end
+
+											if v764 ~= u778.Transparency then
+												u778.Transparency = v764
+											end
+
+											if v765 ~= u778.Material then
+												u778.Material = v765
+											end
+
+											if HitboxShow and v763 ~= u778.Color then
+												u778.Color = v763
+											end
+
+											local v783 = u778:FindFirstChild("HBFace")
+
+											if v783 and v766 ~= v783.Transparency then
+												v783.Transparency = v766
+											end
+										end
+									end
+								end
+							end
+						end
+
+						return
+					end
+
+					for _, v785 in v1.pairs(t8) do
+						v1.pcall(function()
+							if v785 then
+								if not v785.Parent then
+									return
+								end
+								v785:Destroy()
+							end
+						end)
+					end
+
+					v1.table.clear(t8)
+				end)()
+			end
+			local n14 = 0
+			v1.table.insert(
+				t16,
+				v31.Heartbeat.Connect(v31.Heartbeat, function()
+					local v398 = v1.os.clock()
+
+					if v398 - n14 < 0.05 then
+						return
+					end
+
+					n14 = v398
+					Qq()
+				end)
+			)
+			u209 = false
+
+			local v210 = v1.typeof(v1.getgenv) == "function" and v1.getgenv() or v1._G
+
+			v210.__apoc2 = v210.__apoc2 or {}
+			v210.__apoc2.origs = v210.__apoc2.origs or {}
+			origs = v210.__apoc2.origs
+
+			local function gp()
+				local v399, v400 = v1.pcall(function()
+					return LocalPlayer.PlayerGui.Mouse.Cursor.Spinner
+				end)
+
+				if v399 then
+					if not v400 then
+						return
+					end
+
+					v400.Visible = false
+				end
+			end
+
+			function wq()
+				return (function()
+					if u209 then
+						return
+					end
+
+					local v788 = rr()
+
+					if v788 then
+						local v789, v790 = v1.pcall(function()
+							return v788.require("Libraries", "Network")
+						end)
+
+						if v789 and v790 and v1.typeof(v790.Send) == "function" then
+							if v1.typeof(origs.NetworkSend) ~= "function" then
+								origs.NetworkSend = v790.Send
+							end
+
+							local NetworkSend = origs.NetworkSend
+
+							function v790.Send(p139, p140, ...)
+								return (function(...)
+									local v1274 = v1.tostring(p140)
+									local t50 = { ... }
+
+									if v1274 == "Bullet Impact" and u24.Flags.HitboxExpand then
+										local v1276 = t50[5]
+
+										if v1276 and v1276.Name == "HB" and v1276.Parent then
+											local Head = v1276.Parent:FindFirstChild("Head")
+
+											if Head then
+												v1.pcall(function()
+													return (function()
+														local CFrame = v1276.CFrame
+														local HeadCFrame = Head.CFrame
+														local v1314 = t50[7]
+														local v1315 = CFrame:PointToWorldSpace(v1314[1])
+														local v1316 = CFrame:VectorToWorldSpace(v1314[2])
+														local v1317 = CFrame:PointToWorldSpace(v1314[3])
+
+														t50[5] = Head
+														t50[6] = v1317 * Head.Size * t50[1]
+														t50[7] = {
+															HeadCFrame:PointToObjectSpace(v1315),
+															HeadCFrame:VectorToObjectSpace(v1316),
+															HeadCFrame:PointToObjectSpace(v1317),
+														}
+													end)()
+												end)
+											end
+										end
+									end
+
+									if dy("InstaReload") then
+										if v1274 == "Character Reload Firearm Initiated" then
+											local v1278 = NetworkSend(p139, p140, v1.table.unpack(t50))
+
+											if #t50 >= 1 then
+												v1.pcall(NetworkSend, p139, "Character Reload Firearm Committed", t50[1], t50[2], t50[3])
+												v1.pcall(NetworkSend, p139, "Character Reload Firearm Clear", t50[1])
+											end
+
+											v1.task.defer(gp)
+
+											return v1278
+										end
+
+										if v1274 == "Character Reload Firearm Committed" or v1274 == "Character Reload Firearm Clear" then
+											return
+										end
+									end
+
+									return NetworkSend(p139, p140, v1.table.unpack(t50))
+								end)(...)
+							end
+						end
+
+						local v792, v793 = v1.pcall(function()
+							return v788.require("Classes", "Animators")
+						end)
+
+						if v792 and v1.typeof(v793) == "table" then
+							origs.Animators = origs.Animators or {}
+
+							local function nf(p145)
+								if v1.typeof(origs.Animators[p145]) ~= "function" then
+									local v1182 = v793[p145]
+
+									if v1.typeof(v1182) ~= "function" then
+										return
+									end
+
+									origs.Animators[p145] = v1182
+								end
+
+								local v1183 = origs.Animators[p145]
+
+								v793[p145] = function(p146, p147, ...)
+									if dy("InstaReload") and v1.string.find(v1.string.lower(v1.tostring(p147 or "")), "reload", 1, true) then
+										return
+									end
+
+									return v1183(p146, p147, ...)
+								end
+							end
+
+							nf("SetAction")
+							nf("SetState")
+							nf("RunAction")
+							nf("PlayAnimation")
+						end
+
+						u209 = true
+
+						return
+					end
+				end)()
+			end
+
+			u214 = false
+
+			function Mh()
+				if u214 then
+					return
+				end
+
+				local v401 = rr()
+
+				if v401 then
+					local v402, v403 = v1.pcall(function()
+						return v401.require("Classes", "Interactables")
+					end)
+
+					if v402 and v403 and v1.typeof(v403.GetInteractPromptData) == "function" then
+						if v1.typeof(origs.GetInteractPromptData) ~= "function" then
+							origs.GetInteractPromptData = v403.GetInteractPromptData
+						end
+
+						local GetInteractPromptData = origs.GetInteractPromptData
+
+						function v403.GetInteractPromptData(...)
+							return (function(...)
+								local v1186 = GetInteractPromptData(...)
+
+								if dy("InstaLoot") and (v1.type(v1186) == "table" and v1186.Actions and v1186.Actions[1]) then
+									v1186.Actions[1].Time = 0
+								end
+
+								return v1186
+							end)(...)
+						end
+
+						u214 = true
+					end
+
+					return
+				end
+			end
+			function t21.parseMaterial(p150)
+				return v1.Enum.Material[p150 or "SmoothPlastic"] or v1.Enum.Material.SmoothPlastic
+			end
+
+			t21.wcParts = {
+				"1",
+				"2",
+				"Constant",
+				"LeftHandGrip",
+				"RightHandGrip",
+			}
+			t21.wcFolders = {
+				"Action",
+				"AmmoAnimation",
+			}
+
+			function t21.applyWeaponChams(p151, p152, p153, p154)
+				if p151 then
+					local function C(p155)
+						return (function()
+							if p155 and p155:IsA("BasePart") then
+								if p155:GetAttribute("WCsaved") == nil then
+									p155:SetAttribute("WCsaved", true)
+									p155:SetAttribute("WCcol", p155.Color)
+									p155:SetAttribute("WCmat", p155.Material.Name)
+									p155:SetAttribute("WCtr", p155.Transparency)
+								end
+
+								if p152 then
+									p155.Color = p152
+								end
+
+								p155.Material = t21.parseMaterial(p153)
+								p155.Transparency = p154 or 0
+
+								return
+							end
+						end)()
+					end
+
+					for _, v412 in v1.ipairs(t21.wcParts) do
+						C(p151:FindFirstChild(v412))
+					end
+
+					for _, v414 in v1.ipairs(t21.wcFolders) do
+						local v415 = p151:FindFirstChild(v414)
+
+						if v415 then
+							for _, v417 in v1.ipairs(v415:GetChildren()) do
+								C(v417)
+							end
+						end
+					end
+
+					return
+				end
+			end
+			function t21.resetWeaponChams(p158)
+				if not p158 then
+					return
+				end
+
+				local function bb(p159)
+					return (function()
+						if not p159 or not p159:IsA("BasePart") then
+							return
+						end
+
+						if p159:GetAttribute("WCsaved") then
+							local v1191 = p159:GetAttribute("WCcol")
+
+							if v1191 then
+								p159.Color = v1191
+							end
+
+							local v1192 = p159:GetAttribute("WCmat")
+
+							if v1192 then
+								p159.Material = t21.parseMaterial(v1192)
+							end
+
+							local v1193 = p159:GetAttribute("WCtr")
+
+							if v1193 ~= nil then
+								p159.Transparency = v1193
+							end
+							p159:SetAttribute("WCsaved", nil)
+							p159:SetAttribute("WCcol", nil)
+							p159:SetAttribute("WCmat", nil)
+							p159:SetAttribute("WCtr", nil)
+						end
+					end)()
+				end
+
+				for _, v421 in v1.ipairs(t21.wcParts) do
+					bb(p158:FindFirstChild(v421))
+				end
+
+				for _, v423 in v1.ipairs(t21.wcFolders) do
+					local v424 = p158:FindFirstChild(v423)
+
+					if v424 then
+						for _, v426 in v1.ipairs(v424:GetChildren()) do
+							bb(v426)
+						end
+					end
+				end
+			end
+
+			t21.bodyParts = {
+				"Head",
+				"UpperTorso",
+				"LowerTorso",
+				"LeftUpperArm",
+				"LeftLowerArm",
+				"LeftHand",
+				"RightUpperArm",
+				"RightLowerArm",
+				"RightHand",
+				"LeftUpperLeg",
+				"LeftLowerLeg",
+				"LeftFoot",
+				"RightUpperLeg",
+				"RightLowerLeg",
+				"RightFoot",
+				"Torso",
+				"Left Arm",
+				"Right Arm",
+				"Left Leg",
+				"Right Leg",
+			}
+			t21.charChamsOrig = {}
+			t21.charChamsStoredFor = nil
+
+			function t21.storeCharOriginals(p162)
+				t21.charChamsOrig = {}
+
+				if not p162 then
+					return
+				end
+
+				for _, v429 in v1.ipairs(p162:GetChildren()) do
+					if v429:IsA("BasePart") and v429.Name ~= "HumanoidRootPart" then
+						t21.charChamsOrig[v429.Name] = {
+							Color = v429.Color,
+							Material = v429.Material,
+							Transparency = v429.Transparency,
+						}
+					end
+				end
+			end
+			function t21.applyCharChams(p163, p164, p165, p166)
+				if p163 then
+					for _, v435 in v1.ipairs(t21.bodyParts) do
+						local v436 = p163:FindFirstChild(v435)
+
+						if v436 and v436:IsA("BasePart") then
+							if p164 then
+								v436.Color = p164
+							end
+
+							v436.Material = t21.parseMaterial(p165)
+							v436.Transparency = p166 or 0
+						end
+					end
+
+					return
+				end
+			end
+			function t21.resetCharChams(p167)
+				return (function()
+					if not p167 then
+						return
+					end
+
+					for v799, v800 in v1.pairs(t21.charChamsOrig) do
+						local v801 = p167:FindFirstChild(v799)
+
+						if v801 and v801:IsA("BasePart") then
+							v801.Color = v800.Color
+							v801.Material = v800.Material
+							v801.Transparency = v800.Transparency
+						end
+					end
+				end)()
+			end
+
+			t21.origSky = nil
+
+			for _, v217 in v1.ipairs(v30:GetChildren()) do
+				if v217.ClassName == "Sky" then
+					t21.origSky = {
+						Bk = v217.SkyboxBk,
+						Dn = v217.SkyboxDn,
+						Ft = v217.SkyboxFt,
+						Lf = v217.SkyboxLf,
+						Rt = v217.SkyboxRt,
+						Up = v217.SkyboxUp,
+						Star = v217.StarCount,
+						Sun = v217.SunTextureId,
+						Moon = v217.MoonTextureId,
+					}
+
+					break
+				end
+			end
+
+			t21.skyboxes = {
+				["Classic Day"] = {
+					Bk = "rbxasset://textures/sky/sky512_bk.tex",
+					Dn = "rbxasset://textures/sky/sky512_dn.tex",
+					Ft = "rbxasset://textures/sky/sky512_ft.tex",
+					Lf = "rbxasset://textures/sky/sky512_lf.tex",
+					Rt = "rbxasset://textures/sky/sky512_rt.tex",
+					Up = "rbxasset://textures/sky/sky512_up.tex",
+				},
+				Night = {
+					Bk = 12064107,
+					Dn = 12064152,
+					Ft = 12064121,
+					Lf = 12063984,
+					Rt = 12064115,
+					Up = 12064131,
+					Star = 0,
+				},
+				Space = {
+					Bk = 149397692,
+					Dn = 149397686,
+					Ft = 149397697,
+					Lf = 149397684,
+					Rt = 149397688,
+					Up = 149397702,
+					Star = 3000,
+				},
+			}
+
+			function t21.getSky()
+				return (function()
+					for _, v805 in v1.ipairs(v30:GetChildren()) do
+						if v805.ClassName == "Sky" then
+							return v805
+						end
+					end
+
+					local v806 = v1.Instance.new("Sky")
+
+					v806.Parent = v30
+
+					return v806
+				end)()
+			end
+			function t21.applySkybox(p172)
+				if p172 then
+					local function tx(p173)
+						if v1.type(p173) == "number" then
+							return "rbxassetid://" .. p173
+						end
+
+						local v808 = v1.tostring(p173)
+
+						if v808:match("^%d+$") then
+							return "rbxassetid://" .. v808
+						end
+
+						return v808
+					end
+
+					local v440 = t21.getSky()
+
+					v1.pcall(function()
+						v440.SkyboxBk = tx(p172.Bk)
+						v440.SkyboxDn = tx(p172.Dn)
+						v440.SkyboxFt = tx(p172.Ft)
+						v440.SkyboxLf = tx(p172.Lf)
+						v440.SkyboxRt = tx(p172.Rt)
+						v440.SkyboxUp = tx(p172.Up)
+
+						if p172.Star then
+							v440.StarCount = p172.Star
+						end
+
+						if p172.Sun then
+							v440.SunTextureId = tx(p172.Sun)
+						end
+
+						if not p172.Moon then
+							return
+						end
+
+						v440.MoonTextureId = tx(p172.Moon)
+					end)
+
+					return
+				end
+			end
+			function t21.restoreSky()
+				local origSky = t21.origSky
+
+				if not origSky then
+					return
+				end
+
+				local v442 = t21.getSky()
+
+				v1.pcall(function()
+					v442.SkyboxBk = origSky.Bk
+					v442.SkyboxDn = origSky.Dn
+					v442.SkyboxFt = origSky.Ft
+					v442.SkyboxLf = origSky.Lf
+					v442.SkyboxRt = origSky.Rt
+					v442.SkyboxUp = origSky.Up
+
+					if origSky.Star then
+						v442.StarCount = origSky.Star
+					end
+
+					if origSky.Sun then
+						v442.SunTextureId = origSky.Sun
+					end
+
+					if not origSky.Moon then
+						return
+					end
+
+					v442.MoonTextureId = origSky.Moon
+				end)
+			end
+
+			local v218 = u24:CreateTab({
+				Name = "Weapon",
+			})
+			local v219 = v218:CreateSection("Weapon Mods")
+
+			v219:AddToggle({
+				Name = "No Recoil",
+				Default = false,
+				Flag = "NoRecoil",
+			})
+			v219:AddToggle({
+				Name = "No Spread",
+				Default = false,
+				Flag = "NoSpread",
+			})
+			v219:AddToggle({
+				Name = "No Bullet Drop",
+				Default = false,
+				Flag = "NoBulletDrop",
+				Callback = function()
+					ap()
+				end,
+			})
+			v219:AddToggle({
+				Name = "Wallbang",
+				Default = false,
+				Flag = "Wallbang",
+				Tooltip = "Bullets penetrate through walls and map geometry.",
+			})
+			v219:AddToggle({
+				Name = "Insta Reload",
+				Default = false,
+				Flag = "InstaReload",
+				Tooltip = "Skips the reload animation.",
+				Callback = function(p174)
+					if not p174 then
+						return
+					end
+
+					wq()
+				end,
+			})
+
+			local v220 = v218:CreateSection("Bullet Tracer Settings")
+
+			v220:AddToggle({
+				Name = "Bullet Tracers",
+				Default = false,
+				Flag = "Tracers",
+			})
+			v220:AddColorPicker({
+				Name = "Tracer Color",
+				Default = v1.Color3.fromRGB(255, 255, 255),
+				Flag = "TracerColor",
+			})
+			v220:AddSlider({
+				Name = "Tracer Transparency",
+				Default = 0.5,
+				Min = 0,
+				Max = 1,
+				Increment = 0.01,
+				Flag = "TracerTransparency",
+			})
+
+			local v221 = v218:CreateSection("Weapon Chams")
+
+			v221:AddToggle({
+				Name = "Weapon Chams",
+				Default = false,
+				Flag = "WeaponChams",
+				Tooltip = "Restyle your held weapon (local only).",
+				Callback = function(p175)
+					if not p175 then
+						t21.resetWeaponChams(t29.getEquippedGun())
+					end
+				end,
+			})
+			v221:AddColorPicker({
+				Name = "Chams Color",
+				Default = v1.Color3.fromRGB(255, 255, 255),
+				Flag = "WeaponChamsColor",
+			})
+			v221:AddSlider({
+				Name = "Chams Transparency",
+				Default = 0,
+				Min = 0,
+				Max = 1,
+				Increment = 0.01,
+				Flag = "WeaponChamsTransparency",
+			})
+
+			local n15 = 0
+
+			v1.table.insert(
+				t16,
+				v31.Heartbeat.Connect(v31.Heartbeat, function()
+					if not dy("WeaponChams") then
+						return
+					end
+
+					local v445 = v1.os.clock()
+
+					if not (v445 - n15 < 0.3) then
+						n15 = v445
+
+						local v446 = t29.getEquippedGun()
+
+						if v446 then
+							t21.applyWeaponChams(v446, dy("WeaponChamsColor"), "ForceField", dy("WeaponChamsTransparency"))
+						end
+
+						return
+					end
+				end)
+			)
+
+			local v223 = v218:CreateSection("Skin Changer")
+			local s1 = ""
+
+			v223:AddDropdown({
+				Name = "Skin",
+				Options = t29.getSkinIDs(),
+				Default = "",
+				Flag = "SkinChanger",
+				Callback = function(p176)
+					if v1.type(p176) ~= "string" then
+						return
+					end
+
+					s1 = p176
+				end,
+			})
+			v223:AddButton({
+				Name = "Apply Selected Skin",
+				Callback = function()
+					return (function()
+						local v811 = s1 ~= "" and s1 or dy("SkinChanger")
+
+						if not v811 or v811 == "" then
+							if not u24 then
+								return
+							end
+							u24:Notify({
+								Title = "Skin Changer",
+								Content = "Select a skin first.",
+								Duration = 3,
+							})
+
+							return
+						end
+
+						local v812 = t29.getEquippedGun()
+
+						if not v812 then
+							if u24 then
+								u24:Notify({
+									Title = "Skin Changer",
+									Content = "No equipped weapon found.",
+									Duration = 3,
+								})
+							end
+
+							return
+						end
+
+						local v813, v814 = t29.getSkinData(v811)
+
+						if not v813 then
+							if u24 then
+								u24:Notify({
+									Title = "Skin Changer",
+									Content = "Skin data error: " .. v1.tostring(v814),
+									Duration = 3,
+								})
+							end
+
+							return
+						end
+
+						local v815, v816 = v1.pcall(function()
+							return t29.applySkinManual(v812, v813)
+						end)
+
+						if not v815 or not v816 then
+							if not u24 then
+								return
+							end
+							u24:Notify({
+								Title = "Skin Changer",
+								Content = "Failed to apply skin: " .. v1.tostring(v816),
+								Duration = 4,
+							})
+
+							return
+						end
+
+						t29.byGun[v812.Name] = v811
+						t29.installHook()
+
+						if u24 then
+							u24:Notify({
+								Title = "Skin Changer",
+								Content = "Applied " .. v1.tostring(v811) .. " to " .. v812.Name,
+								Duration = 2,
+							})
+						end
+					end)()
+				end,
+			})
+			v223:AddButton({
+				Name = "Clear Skins",
+				Callback = function()
+					return (function()
+						local v819 = t29.clearAll()
+
+						if u24 then
+							u24:Notify({
+								Title = "Skin Changer",
+								Content = "Cleared skins from " .. v819 .. " weapon" .. (v819 ~= 1 and "s" or ""),
+								Duration = 2,
+							})
+						end
+					end)()
+				end,
+			})
+
+			local v225 = u24:CreateTab({
+				Name = "Movement",
+			})
+			local v226 = v225:CreateSection("Freecam Settings")
+
+			v226:AddToggle({
+				Name = "Freecam",
+				Default = false,
+				Flag = "Freecam",
+				Keybind = true,
+				DefaultKey = v1.Enum.KeyCode.X,
+				Tooltip = "Detaches camera and allows you to fly around with it (WASD / Shift / Space / Ctrl)",
+				Callback = function(p181)
+					if not p181 then
+						bf()
+
+						return
+					end
+
+					dv()
+				end,
+			})
+			v226:AddSeparator()
+			v226:AddToggle({
+				Name = "Freeze Character",
+				Default = true,
+				Flag = "AnchorCharacter",
+			})
+			v226:AddSlider({
+				Name = "Normal Speed",
+				Default = 30,
+				Min = 10,
+				Max = 200,
+				Increment = 1,
+				Flag = "FreecamSpeed",
+				Callback = function(p182)
+					n2 = p182
+				end,
+			})
+			v226:AddSlider({
+				Name = "Shift Speed",
+				Default = 60,
+				Min = 10,
+				Max = 200,
+				Increment = 1,
+				Flag = "FreecamShiftSpeed",
+				Callback = function(p183)
+					n3 = p183
+				end,
+			})
+
+			local v227 = v225:CreateSection("Movement")
+
+			v227:AddToggle({
+				Name = "No Fall Stun",
+				Default = false,
+				Flag = "NoFallStun",
+				Tooltip = "Prevents the stun/stumble when landing from a high fall.",
+				Callback = function(p184)
+					return (function()
+						local v822, v823 = v1.pcall(function()
+							return v1.game.GetService(v1.game, "ReplicatedStorage").Globals.FallDamageStart
+						end)
+
+						if not v822 or not v823 then
+							return
+						end
+
+						if p184 then
+							origs.FallDamageStart = origs.FallDamageStart or v823.Value
+							v823.Value = 10000
+
+							return
+						end
+
+						if origs.FallDamageStart ~= nil then
+							v823.Value = origs.FallDamageStart
+							origs.FallDamageStart = nil
+						end
+					end)()
+				end,
+			})
+			v227:AddToggle({
+				Name = "Double Jump",
+				Default = false,
+				Flag = "DoubleJump",
+				Tooltip = "Allows you to jump again while in the air (max 2 jumps).",
+			})
+			v227:AddToggle({
+				Name = "Water Walk",
+				Default = false,
+				Flag = "WaterWalk",
+				Tooltip = "Walk on water surfaces instead of swimming.",
+				Callback = function(p187)
+					return (function()
+						local v826 = v1.workspace.FindFirstChild(v1.workspace, "Map") and v1.workspace.Map.FindFirstChild(v1.workspace.Map, "Water")
+
+						if not v826 then
+							return
+						end
+
+						if p187 then
+							for _, v828 in v1.ipairs(v826:GetDescendants()) do
+								if v828:HasTag("Swim Surface") then
+									v828:RemoveTag("Swim Surface")
+									v828:AddTag("Player Jesus")
+								end
+							end
+
+							return
+						end
+
+						for _, v830 in v1.ipairs(v826:GetDescendants()) do
+							if v830:HasTag("Player Jesus") then
+								v830:RemoveTag("Player Jesus")
+								v830:AddTag("Swim Surface")
+							end
+						end
+					end)()
+				end,
+			})
+
+			local v228 = v225:CreateSection("World")
+
+			v228:AddToggle({
+				Name = "Freeze Zombies",
+				Default = false,
+				Flag = "FreezeZombies",
+				Keybind = true,
+				DefaultKey = v1.Enum.KeyCode.Z,
+				Tooltip = "Anchor nearby zombies in place.",
+			})
+			v228:AddSlider({
+				Name = "Freeze Range",
+				Default = 150,
+				Min = 10,
+				Max = 1000,
+				Increment = 10,
+				Flag = "FreezeZombieRange",
+				Tooltip = "Maximum distance to freeze zombies.",
+			})
+
+			function t21.refreshCorpseTPOptions() end
+
+			v229 = u24:CreateTab({
+				Name = "Visuals",
+			})
+
+			local v230 = v229:CreateSection("Fullbright Settings")
+
+			v230:AddToggle({
+				Name = "Fullbright",
+				Default = false,
+				Flag = "Fullbright",
+				Keybind = true,
+				Tooltip = "Override lighting for better visibility.",
+			})
+			v230:AddSeparator()
+			v230:AddSlider({
+				Name = "Brightness",
+				Default = 1,
+				Min = 0,
+				Max = 5,
+				Increment = 0.01,
+				Flag = "FullbrightBrightness",
+			})
+			v230:AddSlider({
+				Name = "Clock Time",
+				Default = 14,
+				Min = 0,
+				Max = 24,
+				Increment = 0.1,
+				Flag = "FullbrightClockTime",
+			})
+			v230:AddColorPicker({
+				Name = "Ambient Color",
+				Default = v1.Color3.fromRGB(165, 170, 180),
+				Flag = "FullbrightAmbientColor",
+			})
+			v230:AddColorPicker({
+				Name = "Outdoor Ambient Color",
+				Default = v1.Color3.fromRGB(220, 225, 235),
+				Flag = "FullbrightOutdoorAmbientColor",
+			})
+			v230:AddColorPicker({
+				Name = "Atmosphere Color",
+				Default = v1.Color3.fromRGB(220, 238, 255),
+				Flag = "FullbrightAtmosphereColor",
+			})
+
+			local v231 = v229:CreateSection("Corpse ESP")
+
+			v231:AddToggle({
+				Name = "Corpse ESP",
+				Default = false,
+				Flag = "CorpseESP",
+			})
+			v231:AddSlider({
+				Name = "Max Distance",
+				Default = 500,
+				Min = 50,
+				Max = 3000,
+				Increment = 10,
+				Flag = "CorpseMaxDist",
+			})
+			v231:AddToggle({
+				Name = "Charms",
+				Default = false,
+				Flag = "CorpseCharms",
+			})
+			v231:AddSlider({
+				Name = "Fill Transparency",
+				Default = 0.5,
+				Min = 0,
+				Max = 1,
+				Increment = 0.01,
+				Flag = "CorpseCharmFillTrans",
+			})
+			v231:AddSlider({
+				Name = "Outline Transparency",
+				Default = 0,
+				Min = 0,
+				Max = 1,
+				Increment = 0.01,
+				Flag = "CorpseCharmOutlineTrans",
+			})
+			v231:AddColorPicker({
+				Name = "Color",
+				Default = v1.Color3.fromRGB(180, 185, 195),
+				Flag = "CorpseColor",
+			})
+
+			local v232 = v229:CreateSection("Vehicle ESP")
+
+			v232:AddToggle({
+				Name = "Vehicle ESP",
+				Default = false,
+				Flag = "VehicleESP",
+			})
+			v232:AddSlider({
+				Name = "Max Distance",
+				Default = 500,
+				Min = 50,
+				Max = 3000,
+				Increment = 10,
+				Flag = "VehicleMaxDist",
+			})
+			v232:AddToggle({
+				Name = "Charms",
+				Default = false,
+				Flag = "VehicleCharms",
+			})
+			v232:AddSlider({
+				Name = "Fill Transparency",
+				Default = 0.5,
+				Min = 0,
+				Max = 1,
+				Increment = 0.01,
+				Flag = "VehicleCharmFillTrans",
+			})
+			v232:AddSlider({
+				Name = "Outline Transparency",
+				Default = 0,
+				Min = 0,
+				Max = 1,
+				Increment = 0.01,
+				Flag = "VehicleCharmOutlineTrans",
+			})
+			v232:AddColorPicker({
+				Name = "Color",
+				Default = v1.Color3.fromRGB(255, 200, 130),
+				Flag = "VehicleColor",
+			})
+		end
+
+		local v233 = v229:CreateSection("Zombie ESP")
+
+		v233:AddToggle({
+			Name = "Zombie Weapon ESP",
+			Default = false,
+			Flag = "ZombieESP",
+		})
+		v233:AddSlider({
+			Name = "Max Distance",
+			Default = 500,
+			Min = 50,
+			Max = 3000,
+			Increment = 10,
+			Flag = "ZombieMaxDist",
+		})
+		v233:AddToggle({
+			Name = "Charms",
+			Default = false,
+			Flag = "ZombieCharms",
+		})
+		v233:AddSlider({
+			Name = "Fill Transparency",
+			Default = 0.5,
+			Min = 0,
+			Max = 1,
+			Increment = 0.01,
+			Flag = "ZombieCharmFillTrans",
+		})
+		v233:AddSlider({
+			Name = "Outline Transparency",
+			Default = 0,
+			Min = 0,
+			Max = 1,
+			Increment = 0.01,
+			Flag = "ZombieCharmOutlineTrans",
+		})
+		v233:AddColorPicker({
+			Name = "Color",
+			Default = v1.Color3.fromRGB(255, 130, 130),
+			Flag = "ZombieColor",
+		})
+
+		local v234 = v229:CreateSection("Map Markers")
+
+		v234:AddToggle({
+			Name = "Player Map Markers",
+			Default = false,
+			Flag = "MapMarkers",
+		})
+		v234:AddToggle({
+			Name = "Vehicle Map Markers",
+			Default = false,
+			Flag = "VehicleMapMarkers",
+		})
+		v234:AddToggle({
+			Name = "Event Map Markers",
+			Default = false,
+			Flag = "EventESP",
+		})
+		v234:AddSeparator()
+		v234:AddToggle({
+			Name = "Player Distance",
+			Default = false,
+			Flag = "MarkerDistPlayer",
+			Tooltip = "Shows player distances on map markers.",
+		})
+		v234:AddToggle({
+			Name = "Vehicle Distance",
+			Default = false,
+			Flag = "MarkerDistVehicle",
+			Tooltip = "Shows vehicle distances on map markers.",
+		})
+		v234:AddToggle({
+			Name = "Event Distance",
+			Default = false,
+			Flag = "MarkerDistEvent",
+			Tooltip = "Shows event distances on map markers.",
+		})
+		v234:AddToggle({
+			Name = "Show Equipped",
+			Default = false,
+			Flag = "MarkerWeapon",
+			Tooltip = "Shows equipped tool on map markers.",
+		})
+
+		local v235 = v229:CreateSection("Environment")
+
+		v235:AddToggle({
+			Name = "Remove Fog",
+			Default = false,
+			Flag = "RemoveFog",
+			Tooltip = "Removes the world fog layer.",
+		})
+		v235:AddToggle({
+			Name = "Disable Clouds",
+			Default = true,
+			Flag = "DisableClouds",
+			Tooltip = "Removes cloud temporarily.",
+		})
+		t21.foliagePatterns = {
+			"bush",
+			"Bush",
+			"Leaves",
+			"Yucca",
+			"Fronds",
+		}
+
+		function t21.stripFoliage(p190, p191)
+			return (function()
+				local v833 = v1.workspace.FindFirstChild(v1.workspace, "Map")
+				local v834 = v833 and v833:FindFirstChild("Elements")
+
+				if v834 then
+					local n16 = 0
+
+					for _, v837 in v1.ipairs(v834:GetDescendants()) do
+						if v837:IsA("MeshPart") then
+							local Name = v837.Name
+
+							for _, v840 in v1.ipairs(p190) do
+								if v1.string.find(Name, v840, 1, true) then
+									v1.pcall(function()
+										v837:Destroy()
+									end)
+									n16 += 1
+
+									break
+								end
+							end
+						end
+					end
+
+					if u24 then
+						u24:Notify({
+							Title = p191,
+							Content = "Removed " .. n16,
+							Duration = 2,
+						})
+					end
+
+					return
+				end
+
+				if not u24 then
+					return
+				end
+				u24:Notify({
+					Title = p191,
+					Content = "Map.Elements not found",
+					Duration = 3,
+				})
+			end)()
+		end
+
+		v235:AddToggle({
+			Name = "Strip Foliage",
+			Default = false,
+			Flag = "StripFoliage",
+			Tooltip = "Automatically remove bushes and tree leaves as they load.",
+			Callback = function(p194)
+				if p194 then
+					t21.stripFoliage(t21.foliagePatterns, "Strip Foliage")
+				end
+			end,
+		})
+
+		local v236 = v229:CreateSection("Skybox")
+		local t51 = {}
+
+		for v238 in v1.pairs(t21.skyboxes) do
+			t51[#t51 + 1] = v238
+		end
+
+		v1.table.sort(t51)
+		v236:AddToggle({
+			Name = "Skybox Changer",
+			Default = false,
+			Flag = "SkyboxEnabled",
+			Tooltip = "When on, applies the selected preset. Turning it off restores the original sky.",
+			Callback = function(p195)
+				if p195 then
+					local v457 = dy("SkyboxPreset")
+
+					if v457 and t21.skyboxes[v457] then
+						t21.applySkybox(t21.skyboxes[v457])
+
+						return
+					end
+				else
+					t21.restoreSky()
+				end
+			end,
+		})
+		v236:AddDropdown({
+			Name = "Preset",
+			Options = t51,
+			Default = t51[1] or "",
+			Flag = "SkyboxPreset",
+			Callback = function(p196)
+				if dy("SkyboxEnabled") then
+					if not t21.skyboxes[p196] then
+						return
+					end
+
+					t21.applySkybox(t21.skyboxes[p196])
+				end
+			end,
+		})
+
+		local v239 = u24:CreateTab({
+			Name = "Misc",
+		})
+
+		v239:CreateSection("Utility"):AddToggle({
+			Name = "Insta Lootable",
+			Default = false,
+			Flag = "InstaLoot",
+			Tooltip = "Removes the interaction delay when looting containers and corpses.",
+			Callback = function(p197)
+				if p197 then
+					Mh()
+				end
+			end,
+		})
+
+		local v240 = v239:CreateSection("Character Chams")
+
+		v240:AddToggle({
+			Name = "Character Chams",
+			Default = false,
+			Flag = "CharChams",
+			Tooltip = "Restyle your own character (local only).",
+			Callback = function(p198)
+				if p198 then
+					return
+				end
+
+				t21.resetCharChams(LocalPlayer.Character)
+				t21.charChamsStoredFor = nil
+			end,
+		})
+		v240:AddColorPicker({
+			Name = "Chams Color",
+			Default = v1.Color3.fromRGB(255, 255, 255),
+			Flag = "CharChamsColor",
+		})
+		v240:AddSlider({
+			Name = "Chams Transparency",
+			Default = 0,
+			Min = 0,
+			Max = 1,
+			Increment = 0.01,
+			Flag = "CharChamsTransparency",
+		})
+
+		local n17 = 0
+
+		v1.table.insert(
+			t16,
+			v31.Heartbeat.Connect(v31.Heartbeat, function()
+				if dy("CharChams") then
+					local v461 = v1.os.clock()
+
+					if not (v461 - n17 < 0.3) then
+						n17 = v461
+
+						local Character = LocalPlayer.Character
+
+						if not Character then
+							return
+						end
+
+						if Character ~= t21.charChamsStoredFor then
+							t21.storeCharOriginals(Character)
+							t21.charChamsStoredFor = Character
+						end
+
+						t21.applyCharChams(Character, dy("CharChamsColor"), "ForceField", dy("CharChamsTransparency"))
+
+						return
+					end
+
+					return
+				end
+			end)
+		)
+
+		local v242 = v239:CreateSection("Proximity Alert")
+
+		v242:AddToggle({
+			Name = "Proximity Alert",
+			Default = false,
+			Flag = "ProximityAlert",
+			Tooltip = "Notifies you when a player comes within the alert distance.",
+		})
+		v242:AddSlider({
+			Name = "Alert Distance",
+			Default = 500,
+			Min = 50,
+			Max = 3000,
+			Increment = 10,
+			Flag = "ProximityDist",
+		})
+		v242:AddToggle({
+			Name = "Ignore Party",
+			Default = true,
+			Flag = "ProximityIgnoreParty",
+			Tooltip = "Don't alert for squadmates.",
+		})
+
+		local n18 = 0
+
+		v1.table.insert(
+			t16,
+			v31.Heartbeat.Connect(v31.Heartbeat, function()
+				return (function()
+					if not dy("ProximityAlert") then
+						return
+					end
+
+					local v843 = v1.os.clock()
+
+					if v843 - n18 < 1 then
+						return
+					end
+
+					n18 = v843
+
+					local Character = LocalPlayer.Character
+					local v845 = Character and Character:FindFirstChild("HumanoidRootPart")
+
+					if not v845 then
+						return
+					end
+
+					local proxNotified = t21.proxNotified
+
+					if not proxNotified then
+						proxNotified = {}
+						t21.proxNotified = proxNotified
+					end
+
+					local Position = v845.Position
+					local v848 = dy("ProximityDist") or 500
+					local v849 = v848 * 1.15
+					local v850 = dy("ProximityIgnoreParty")
+
+					for _, v852 in v1.ipairs(t18) do
+						if v852 ~= LocalPlayer and (not v850 or not qr(v852)) then
+							local Character2 = v852.Character
+							local v854 = Character2 and Character2:FindFirstChild("HumanoidRootPart")
+
+							if v854 then
+								local Magnitude = (Position - v854.Position).Magnitude
+
+								if Magnitude <= v848 then
+									if not proxNotified[v852] then
+										proxNotified[v852] = true
+
+										if u24 then
+											u24:Notify({
+												Title = "Player Nearby",
+												Content = v852.Name .. " is " .. v1.math.floor(Magnitude) .. " studs away",
+												Duration = 4,
+											})
+										end
+									end
+								elseif v849 < Magnitude then
+									proxNotified[v852] = nil
+								end
+							end
+						end
+					end
+
+					for v856 in v1.pairs(proxNotified) do
+						if not v856.Parent then
+							proxNotified[v856] = nil
+						end
+					end
+				end)()
+			end)
+		)
+
+		local v244 = u24:CreateTab({
+			Name = "Settings",
+			Hidden = true,
+		})
+		local v245 = v244:CreateSection("Configuration")
+		local s2 = "default"
+		local u247 = nil
+
+		v245:AddTextbox({
+			Name = "Config Name",
+			Placeholder = "letters, digits, _ or -",
+			Default = "default",
+			Callback = function(p201)
+				s2 = p201
+			end,
+		})
+
+		local v248 = v245:AddDropdown({
+			Name = "Saved Configs",
+			Options = u24:ListConfigs(),
+			Callback = function(p202)
+				u247 = p202
+			end,
+		})
+
+		local function Cm()
+			v248:SetOptions(u24:ListConfigs())
+		end
+
+		v245:AddButton({
+			Name = "Save  (uses Config Name)",
+			Callback = function()
+				if u24:SaveConfig(s2) then
+					Cm()
+				end
+			end,
+		})
+		v245:AddButton({
+			Name = "Load Selected",
+			Callback = function()
+				if not u247 then
+					u24:Notify({
+						Title = "Config",
+						Content = "Select a config first",
+						Duration = 3,
+					})
+
+					return
+				end
+				u24:LoadConfig(u247)
+			end,
+		})
+		v245:AddButton({
+			Name = "Delete Selected",
+			Callback = function()
+				if u247 then
+					if not u24:DeleteConfig(u247) then
+						return
+					end
+
+					u247 = nil
+					Cm()
+				end
+			end,
+		})
+		v245:AddButton({
+			Name = "Refresh List",
+			Callback = function()
+				Cm()
+				t21.refreshAutoLabel()
+			end,
+		})
+		v245:AddButton({
+			Name = "Reset to Defaults",
+			Callback = function()
+				u24:ResetToDefaults()
+			end,
+		})
+		v245:AddSeparator()
+		t21.autoLabel = v245:AddLabel({
+			Text = "Autoload: <none>",
+		})
+
+		function t21.refreshAutoLabel()
+			local v465 = u24:GetAutoload()
+
+			t21.autoLabel.Set(t21.autoLabel, "Autoload: " .. (v465 and '"' .. v465 .. '"' or "<none>"))
+		end
+
+		v245:AddButton({
+			Name = "Set Selected as Autoload",
+			Callback = function()
+				return (function()
+					if not u247 then
+						u24:Notify({
+							Title = "Autoload",
+							Content = "Select a config first",
+							Duration = 3,
+						})
+
+						return
+					end
+
+					if not u24:SetAutoload(u247) then
+						return
+					end
+					u24:Notify({
+						Title = "Autoload",
+						Content = 'Set to "' .. u247 .. '"',
+						Duration = 2,
+					})
+					t21.refreshAutoLabel()
+				end)()
+			end,
+		})
+		v245:AddButton({
+			Name = "Clear Autoload",
+			Callback = function()
+				if not u24:SetAutoload(nil) then
+					return
+				end
+				u24:Notify({
+					Title = "Autoload",
+					Content = "Cleared",
+					Duration = 2,
+				})
+				t21.refreshAutoLabel()
+			end,
+		})
+		t21.refreshAutoLabel()
+		v245:AddLabel({
+			Text = "Config files stored per game. Requires executor filesystem.",
+		})
+
+		local v250 = v244:CreateSection("UI / Script")
+
+		v250:AddKeybind({
+			Name = "Toggle Key",
+			Default = v1.Enum.KeyCode.P,
+			Callback = function(p205, p206)
+				if p206 == "set" and u24 then
+					local _, _ = v1.pcall(u24.SetToggleKey, u24, p205)
+				end
+			end,
+		})
+		v250:AddSeparator()
+		v250:AddButton({
+			Name = "Unload Script",
+			Tooltip = "Destroys the Menu & removes all changes to the game.",
+			Callback = function()
+				u187()
+			end,
+		})
+		u24:SetSettingsCallback(function()
+			u24:SelectTab(v244)
+			Cm()
+		end)
+
+		function u187()
+			return (function()
+				if u70 then
+					v1.pcall(function()
+						u70:Disconnect()
+					end)
+				end
+
+				if u71 then
+					v1.pcall(function()
+						u71:Disconnect()
+					end)
+				end
+
+				v1.pcall(function()
+					t29.clearAll()
+				end)
+				v1.pcall(function()
+					t29.removeHook()
+				end)
+				v1.pcall(function()
+					t21.resetWeaponChams(t29.getEquippedGun())
+				end)
+				v1.pcall(function()
+					t21.resetCharChams(LocalPlayer.Character)
+				end)
+				Ch()
+				bf()
+				Po()
+				Le()
+
+				if u129 then
+					Jl(u129)
+					u129 = nil
+				end
+
+				if u123 then
+					v1.pcall(function()
+						u123:Disconnect()
+					end)
+					u123 = nil
+				end
+
+				v1.pcall(function()
+					if not v128 then
+						return
+					end
+					v128:Destroy()
+				end)
+
+				for _, v862 in v1.pairs(t2) do
+					Jl(v862.box)
+					Jl(v862.boxOutline)
+					Jl(v862.name)
+					Jl(v862.dist)
+					Jl(v862.equipped)
+					Jl(v862.party)
+					Jl(v862.lookLine)
+					Jl(v862.tracer)
+
+					if v862.highlight then
+						v1.pcall(function()
+							v862.highlight.Destroy(v862.highlight)
+						end)
+					end
+
+					if v862.skeleton then
+						for _, v864 in v1.ipairs(v862.skeleton) do
+							Jl(v864.line)
+						end
+					end
+				end
+
+				t2 = {}
+				t3 = {}
+
+				for _, v866 in v1.pairs(t10) do
+					v1.pcall(function()
+						v866:Remove()
+					end)
+				end
+
+				t10 = {}
+
+				for _, v868 in v1.pairs(t11) do
+					v1.pcall(function()
+						v868:Remove()
+					end)
+				end
+
+				t11 = {}
+
+				for _, v870 in v1.pairs(t12) do
+					v1.pcall(function()
+						v870:Remove()
+					end)
+				end
+
+				t12 = {}
+
+				for _, v872 in v1.pairs(t13) do
+					v1.pcall(function()
+						v872:Destroy()
+					end)
+				end
+
+				t13 = {}
+
+				for _, v874 in v1.pairs(t14) do
+					v1.pcall(function()
+						v874:Destroy()
+					end)
+				end
+
+				t14 = {}
+
+				for _, v876 in v1.pairs(t15) do
+					v1.pcall(function()
+						v876:Destroy()
+					end)
+				end
+
+				t15 = {}
+
+				for _, v878 in v1.pairs(t4) do
+					v1.pcall(function()
+						v878:Destroy()
+					end)
+				end
+
+				t4 = {}
+
+				for _, v880 in v1.pairs(t5) do
+					v1.pcall(function()
+						v880:Destroy()
+					end)
+				end
+
+				t5 = {}
+
+				for _, v882 in v1.pairs(t9) do
+					v1.pcall(function()
+						v882:Destroy()
+					end)
+				end
+
+				t9 = {}
+
+				local v883 = v1.workspace.FindFirstChild(v1.workspace, "Zombies")
+
+				if v883 then
+					for _, v885 in v1.ipairs(v883:GetChildren()) do
+						if v885:IsA("Model") then
+							local v886 = v885:FindFirstChild("HumanoidRootPart") or v885.PrimaryPart
+
+							if v886 then
+								v886.Anchored = false
+							end
+						end
+					end
+				end
+
+				local v887 = v1.workspace.FindFirstChild(v1.workspace, "Map") and v1.workspace.Map.FindFirstChild(v1.workspace.Map, "Water")
+
+				if v887 then
+					for _, v889 in v1.ipairs(v887:GetDescendants()) do
+						if v889:HasTag("Player Jesus") then
+							v889:RemoveTag("Player Jesus")
+							v889:AddTag("Swim Surface")
+						end
+					end
+				end
+
+				if u214 then
+					local v890 = rr()
+
+					if v890 then
+						local v891, v892 = v1.pcall(function()
+							return (function()
+								return v890.require("Classes", "Interactables")
+							end)()
+						end)
+
+						if v891 and v892 and v1.typeof(origs.GetInteractPromptData) == "function" then
+							v892.GetInteractPromptData = origs.GetInteractPromptData
+						end
+					end
+
+					u214 = false
+				end
+
+				v30.Brightness = t21.origBrightness
+				v30.ClockTime = t21.origClockTime
+				v30.FogEnd = t21.origFogEnd
+				v30.GlobalShadows = t21.origShadows
+				v30.ColorShift_Bottom = t21.colorShift_Bottom
+				v30.ColorShift_Top = t21.colorShift_Top
+				v30.OutdoorAmbient = t21.outdoorAmbient
+				v30.Ambient = t21.origAmbient
+				v30.Atmosphere.Decay = t21.origDecay
+				v30.Atmosphere.Color = t21.origColor
+				v30.Atmosphere.Density = t21.origDensity
+				Clouds.Enabled = true
+				v1.pcall(function()
+					t21.restoreSky()
+				end)
+
+				if u209 then
+					local v893 = rr()
+
+					if v893 then
+						local v894, v895 = v1.pcall(function()
+							return (function()
+								return v893.require("Libraries", "Network")
+							end)()
+						end)
+
+						if v894 and v895 and v1.typeof(origs.NetworkSend) == "function" then
+							v1.pcall(function()
+								v895.Send = origs.NetworkSend
+							end)
+						end
+
+						local v896, v897 = v1.pcall(function()
+							return v893.require("Classes", "Animators")
+						end)
+
+						if v896 and v1.type(v897) == "table" and v1.type(origs.Animators) == "table" then
+							for v898, v899 in v1.pairs(origs.Animators) do
+								if v1.typeof(v899) == "function" then
+									v1.pcall(function()
+										v897[v898] = v899
+									end)
+								end
+							end
+						end
+					end
+
+					u209 = false
+				end
+
+				for _, v901 in v1.pairs(t16) do
+					v1.pcall(function()
+						v901:Disconnect()
+					end)
+				end
+
+				t16 = {}
+				v32.MouseBehavior = v1.Enum.MouseBehavior.Default
+				v32.MouseIconEnabled = true
+
+				for _, v903 in v1.pairs(t8) do
+					v1.pcall(function()
+						v903:Destroy()
+					end)
+				end
+
+				v1.table.clear(t8)
+				v23:Destroy()
+				v1._G.__apoc2_cleanup = nil
+			end)()
+		end
+
+		v1._G.__apoc2_cleanup = u187
+		u129 = v1.Drawing.new("Circle")
+		u129.Thickness = 2
+		u129.Filled = false
+		u129.Transparency = 0.7
+		u129.Color = v1.Color3.fromRGB(255, 255, 255)
+		u129.Visible = false
+
+		local function Xk()
+			return (function()
+				local t52 = {}
+
+				for i = 1, 25 do
+					t52[i] = v1.math.sqrt(i * v1.math.pi)
+				end
+
+				if t52[5] == 999 then
+					v1.error("nope")
+				end
+			end)()
+		end
+
+		Xk()
+
+		if not v1.hookfunction and not v1.getgc then
+			if not v1.getrenv then
+			end
+		end
+
+		if DeathScreen then
+			DeathScreen:GetPropertyChangedSignal("Enabled").Connect(DeathScreen:GetPropertyChangedSignal("Enabled"), function()
+				if not DeathScreen.Enabled then
+					return
+				end
+
+				Ch()
+				bf()
+				v32.MouseBehavior = v1.Enum.MouseBehavior.Default
+				v32.MouseIconEnabled = true
+			end)
+		end
+
+		if MainMenu then
+			MainMenu:GetPropertyChangedSignal("Enabled").Connect(MainMenu:GetPropertyChangedSignal("Enabled"), function()
+				if not MainMenu.Enabled then
+					return
+				end
+
+				Ch()
+				bf()
+				v32.MouseBehavior = v1.Enum.MouseBehavior.Default
+				v32.MouseIconEnabled = true
+			end)
+		end
+
+		LocalPlayer.CharacterRemoving.Connect(LocalPlayer.CharacterRemoving, function()
+			Ch()
+			bf()
+			v32.MouseBehavior = v1.Enum.MouseBehavior.Default
+			v32.MouseIconEnabled = true
+		end)
+		LocalPlayer.CharacterAdded.Connect(LocalPlayer.CharacterAdded, function(p215)
+			u36 = p215
+			u37 = p215:WaitForChild("HumanoidRootPart")
+			t1[1] = p215
+			Ch()
+			v32.MouseBehavior = v1.Enum.MouseBehavior.Default
+			v32.MouseIconEnabled = true
+
+			if dy("Freecam") then
+				dv()
+			end
+		end)
+
+		for _, v253 in v1.ipairs(v28:GetPlayers()) do
+			if v253 ~= LocalPlayer then
+				v1.table.insert(t18, v253)
+			end
+		end
+
+		v28.PlayerAdded.Connect(v28.PlayerAdded, function(p216)
+			if p216 ~= LocalPlayer then
+				v1.table.insert(t18, p216)
+			end
+		end)
+		v28.PlayerRemoving.Connect(v28.PlayerRemoving, function(p217)
+			return (function()
+				for v910, v911 in v1.ipairs(t18) do
+					if v911 == p217 then
+						v1.table.remove(t18, v910)
+
+						break
+					end
+				end
+
+				if u94 and p217.Character then
+					if u94.Parent ~= p217.Character then
+						return
+					end
+
+					u94 = nil
+				end
+			end)()
+		end)
+
+		local n19 = 0
+
+		u71 = v31.Heartbeat.Connect(v31.Heartbeat, function()
+			return (function()
+				if not u36 then
+					return
+				end
+
+				if not (v1.os.clock() - n19 < 0.25) then
+					n19 = v1.os.clock()
+
+					if not dy("FreezeZombies") then
+						local v914 = v1.workspace.FindFirstChild(v1.workspace, "Zombies")
+
+						if not v914 then
+							return
+						end
+
+						for _, v916 in v1.ipairs(v914:GetChildren()) do
+							if v916:IsA("Model") then
+								local v917 = v916:FindFirstChild("HumanoidRootPart") or v916.PrimaryPart
+
+								if v917 then
+									v917.Anchored = false
+								end
+							end
+						end
+
+						return
+					end
+
+					local v918 = v1.workspace.FindFirstChild(v1.workspace, "Zombies")
+					local Character = LocalPlayer.Character
+					local v920 = Character and Character:FindFirstChild("HumanoidRootPart")
+
+					if v918 then
+						if not v920 then
+							return
+						end
+
+						local v921 = dy("FreezeZombieRange") or 150
+
+						for _, v923 in v1.ipairs(v918:GetChildren()) do
+							if v923:IsA("Model") then
+								local v924 = v923:FindFirstChild("HumanoidRootPart") or v923.PrimaryPart
+
+								if v924 then
+									if v921 >= (v924.Position - v920.Position).Magnitude then
+										v924.Anchored = true
+									else
+										v924.Anchored = false
+									end
+								end
+							end
+						end
+					end
+
+					return
+				end
+			end)()
+		end)
+		v1.table.insert(t16, u71)
+
+		local u255 = nil
+
+		local function Yo(p222)
+			if v1.next(t29.byGun) == nil then
+				return
+			end
+
+			if not p222 then
+				return
+			end
+
+			if p222:IsA("Tool") then
+				for _, v475 in v1.ipairs(p222:GetChildren()) do
+					if v475:IsA("Model") then
+						p222 = v475
+
+						break
+					end
+				end
+			end
+
+			if p222 and p222:IsA("Model") then
+				v1.task.defer(t29.reapplyIfTracked, p222)
+			end
+		end
+		local function tn(p223)
+			return (function()
+				if u255 then
+					u255:Disconnect()
+					u255 = nil
+				end
+
+				if p223 then
+					local v927 = p223:WaitForChild("Equipped", 10)
+
+					if v927 then
+						u255 = v927.ChildAdded.Connect(v927.ChildAdded, Yo)
+						v1.table.insert(t16, u255)
+
+						for _, v929 in v1.ipairs(v927:GetChildren()) do
+							Yo(v929)
+						end
+
+						return
+					end
+
+					return
+				end
+			end)()
+		end
+
+		v1.table.insert(t16, LocalPlayer.CharacterAdded.Connect(LocalPlayer.CharacterAdded, tn))
+
+		if LocalPlayer.Character then
+			tn(LocalPlayer.Character)
+		end
+
+		v1.table.insert(
+			t16,
+			v31.RenderStepped.Connect(v31.RenderStepped, function()
+				if v1.next(t29.byGun) == nil then
+					return
+				end
+
+				local v477 = t29.getEquippedGun()
+
+				if not v477 then
+					return
+				end
+
+				if not t29.byGun[v477.Name] then
+					return
+				end
+
+				if not t29.modelHasSkin(v477) then
+					t29.reapplyIfTracked(v477)
+
+					return
+				end
+			end)
+		)
+		t21.jumpUsage = 1
+		t21.djHumanoid = nil
+		t21.djRoot = nil
+		t21.djStateConn = nil
+
+		function t21.bindHumanoid(p226)
+			if t21.djStateConn then
+				t21.djStateConn.Disconnect(t21.djStateConn)
+				t21.djStateConn = nil
+			end
+
+			t21.djHumanoid = p226
+			t21.djRoot = nil
+
+			if p226 and p226.Parent then
+				t21.djRoot = p226.Parent.FindFirstChild(p226.Parent, "HumanoidRootPart")
+			end
+
+			t21.jumpUsage = 1
+
+			if not p226 then
+				return
+			end
+
+			t21.djStateConn = p226.StateChanged.Connect(p226.StateChanged, function(_, p228)
+				return (function()
+					if p228 ~= v1.Enum.HumanoidStateType.Landed then
+						return
+					end
+
+					t21.jumpUsage = 1
+				end)()
+			end)
+		end
+		function t21.refreshHumanoid()
+			return (function()
+				local Character = LocalPlayer.Character
+
+				if Character then
+					local Humanoid = Character:FindFirstChildOfClass("Humanoid")
+
+					if Humanoid == t21.djHumanoid then
+						if t21.djHumanoid then
+							if t21.djRoot then
+								return
+							end
+
+							t21.djRoot = Character:FindFirstChild("HumanoidRootPart")
+
+							return
+						end
+					else
+						t21.bindHumanoid(Humanoid)
+					end
+
+					return
+				end
+			end)()
+		end
+
+		local Character = LocalPlayer.Character
+
+		if Character then
+			local Humanoid = Character:FindFirstChildOfClass("Humanoid")
+
+			if Humanoid then
+				t21.bindHumanoid(Humanoid)
+			end
+		end
+
+		v1.table.insert(
+			t16,
+			LocalPlayer.CharacterAdded.Connect(LocalPlayer.CharacterAdded, function(p233)
+				local Humanoid = p233:WaitForChild("Humanoid", 5)
+
+				if not Humanoid then
+					return
+				end
+
+				t21.bindHumanoid(Humanoid)
+			end)
+		)
+		v1.table.insert(
+			t16,
+			v32.InputBegan.Connect(v32.InputBegan, function(p234, p235)
+				if p235 then
+					return
+				end
+
+				if p234.KeyCode == v1.Enum.KeyCode.Space then
+					if dy("DoubleJump") then
+						t21.refreshHumanoid()
+
+						if not t21.djHumanoid or not t21.djRoot then
+							return
+						end
+
+						if t21.djHumanoid.GetState(t21.djHumanoid) ~= v1.Enum.HumanoidStateType.Freefall then
+							return
+						end
+
+						if not (t21.jumpUsage >= 1) then
+							return
+						end
+
+						t21.jumpUsage = t21.jumpUsage - 1
+						t21.djHumanoid.ChangeState(t21.djHumanoid, v1.Enum.HumanoidStateType.Jumping, true)
+
+						return
+					end
+
+					return
+				end
+			end)
+		)
+
+		local n20 = 0
+
+		v1.table.insert(
+			t16,
+			v31.Heartbeat.Connect(v31.Heartbeat, function()
+				return (function()
+					local v938 = v1.os.clock()
+
+					if v938 - n20 < 0.1 then
+						return
+					end
+
+					n20 = v938
+
+					if not t21.mLabels then
+						t21.mLabels = v1.setmetatable({}, {
+							__mode = "k",
+						})
+					end
+
+					local mLabels = t21.mLabels
+					local MapEnabled = Map.Enabled
+					local v941 = dy("MarkerWeapon")
+					local v942 = dy("MarkerDistPlayer")
+					local v943 = dy("MarkerDistVehicle")
+					local v944 = dy("MarkerDistEvent")
+					local v945 = u36 and u36:FindFirstChild("HumanoidRootPart")
+
+					if dy("MapMarkers") then
+						for v946, v947 in v1.pairs(t4) do
+							local Character3 = v946.Character
+
+							if not MapEnabled or not ux(Character3) or not Character3.PrimaryPart then
+								v947.Visible = false
+							else
+								local v949 = Rg(Character3.PrimaryPart.Position)
+
+								v947.Position = v1.UDim2.fromScale(v949.X, v949.Y)
+								v947.Visible = true
+
+								local v950 = mLabels[v947]
+
+								if not v950 then
+									v950 = {
+										w = v947:FindFirstChild("WeaponLabel"),
+										n = v947:FindFirstChild("Name"),
+										d = v947:FindFirstChild("DistLabel"),
+									}
+									mLabels[v947] = v950
+								end
+
+								local w = v950.w
+								local n = v950.n
+								local d = v950.d
+
+								if w then
+									w.Visible = v941
+
+									if v941 then
+										w.Text = xk(Character3) or "Unarmed"
+									end
+								end
+
+								local n21 = -2
+								if w then
+									w.Position = v1.UDim2.new(0.5, 0, 0, n21)
+
+									if v941 then
+										n21 -= 12
+									end
+								end
+
+								if n then
+									n.Position = v1.UDim2.new(0.5, 0, 0, n21)
+									n21 -= 13
+								end
+
+								if d then
+									d.Visible = v942
+									d.Position = v1.UDim2.new(0.5, 0, 0, n21)
+
+									if v942 and v945 then
+										d.Text = "[" .. v1.math.floor((Character3.PrimaryPart.Position - v945.Position).Magnitude) .. "]"
+									end
+								end
+							end
+						end
+					else
+						for _, v956 in v1.pairs(t4) do
+							v956.Visible = false
+						end
+					end
+
+					if dy("VehicleMapMarkers") then
+						for v957, v958 in v1.pairs(t5) do
+							if not MapEnabled or not v957.PrimaryPart or v957.Parent ~= v1.workspace.Vehicles then
+								v958.Visible = false
+							else
+								local v959 = Rg(v957.PrimaryPart.Position)
+
+								v958.Position = v1.UDim2.fromScale(v959.X, v959.Y)
+								v958.Visible = true
+
+								local v960 = mLabels[v958]
+
+								if not v960 then
+									v960 = {
+										n = v958:FindFirstChild("Name"),
+										d = v958:FindFirstChild("DistLabel"),
+									}
+									mLabels[v958] = v960
+								end
+
+								local n = v960.n
+								local d = v960.d
+								local n22 = -2
+								if n then
+									n.Position = v1.UDim2.new(0.5, 0, 0, n22)
+									n22 -= 13
+								end
+
+								if d then
+									d.Visible = v943
+									d.Position = v1.UDim2.new(0.5, 0, 0, n22)
+
+									if v943 and v945 then
+										d.Text = "[" .. v1.math.floor((v957.PrimaryPart.Position - v945.Position).Magnitude) .. "]"
+									end
+								end
+							end
+						end
+					else
+						for _, v965 in v1.pairs(t5) do
+							v965.Visible = false
+						end
+					end
+
+					if not dy("EventESP") then
+						for _, v967 in v1.pairs(t9) do
+							v967.Visible = false
+						end
+					else
+						for _, v969 in v1.ipairs(t23) do
+							local v970 = t9[v969.cfv]
+
+							if v970 then
+								local v971 = Rg(v969.pos)
+
+								v970.Position = v1.UDim2.fromScale(v971.X, v971.Y)
+								v970.Visible = MapEnabled
+
+								local v972 = mLabels[v970]
+
+								if not v972 then
+									v972 = {
+										n = v970:FindFirstChild("Name"),
+										d = v970:FindFirstChild("DistLabel"),
+									}
+									mLabels[v970] = v972
+								end
+
+								local n = v972.n
+								local d = v972.d
+
+								if n then
+									n.TextColor3 = v113
+								end
+
+								local n23 = -2
+								if n then
+									n.Position = v1.UDim2.new(0.5, 0, 0, n23)
+									n23 -= 13
+								end
+
+								if d then
+									d.Visible = v944
+									d.Position = v1.UDim2.new(0.5, 0, 0, n23)
+
+									if v944 and v945 then
+										d.Text = "[" .. v1.math.floor((v969.pos - v945.Position).Magnitude) .. "]"
+									end
+								end
+							end
+						end
+					end
+
+					if not (v938 - n1 > 0.1) then
+						return
+					end
+
+					hf()
+					n1 = v938
+				end)()
+			end)
+		)
+		t21.espCfgTime = 0
+
+		function t21.rebuildEspConfig()
+			return (function()
+				local Flags = u24.Flags
+				local BoxVisHidden = Flags.BoxVisHidden
+				local NameVisHidden = Flags.NameVisHidden
+				local SkelVisHidden = Flags.SkelVisHidden
+				local CharmsFillVisHidden = Flags.CharmsFillVisHidden
+				local t53 = {
+					UI = 0,
+					System = 1,
+					Plex = 2,
+					Monospace = 3,
+				}
+
+				t21.espCfg = {
+					maxDist = Flags.MaxDist or 2000,
+					box = Flags.Box,
+					boxThick = Flags.BoxThickness or 1,
+					boxOutline = Flags.BoxOutline,
+					boxOutlineCol = Flags.BoxOutlineColor or v112,
+					boxOutlineThick = Flags.BoxOutlineThickness or 1,
+					visColor = Flags.VisColor,
+					boxVisible = BoxVisHidden and BoxVisHidden[1],
+					boxHidden = BoxVisHidden and BoxVisHidden[2],
+					boxStandard = Flags.BoxStandard,
+					name = Flags.Name,
+					nameVisColor = Flags.NameVisColor,
+					nameVisible = NameVisHidden and NameVisHidden[1],
+					nameHidden = NameVisHidden and NameVisHidden[2],
+					nameStandard = Flags.NameStandard,
+					nameTransp = Flags.NameTransparency or 1,
+					nameOutline = Flags.NameOutline or false,
+					nameOutlineCol = Flags.NameOutlineColor or v112,
+					partyTag = Flags.PartyTag,
+					dist = Flags.Dist,
+					distDyn = Flags.DistDynamicColor,
+					distColor = Flags.DistColor or v113,
+					distTransp = Flags.DistTransparency or 1,
+					distOutline = Flags.DistOutline or false,
+					distOutlineCol = Flags.DistOutlineColor or v112,
+					equip = Flags.Equip,
+					equipColor = Flags.EquipColor or v113,
+					equipTransp = Flags.EquipTransparency or 1,
+					equipOutline = Flags.EquipOutline or false,
+					equipOutlineCol = Flags.EquipOutlineColor or v112,
+					charms = Flags.Charms,
+					charmsFill = Flags.CharmsFill or v113,
+					charmsFillTransp = Flags.CharmsFillTransparency or 0.5,
+					charmsOutline = Flags.CharmsOutline or v112,
+					charmsOutlineTransp = Flags.CharmsOutlineTransparency or 0,
+					charmsVisColor = Flags.CharmsVisColor,
+					charmsFillVisible = CharmsFillVisHidden and CharmsFillVisHidden[1],
+					charmsFillHidden = CharmsFillVisHidden and CharmsFillVisHidden[2],
+					nameSize = Flags.NameSize or 17,
+					distSize = Flags.DistSize or 17,
+					equipSize = Flags.EquipSize or 17,
+					partySize = Flags.PartySize or 17,
+					nameFont = t53[Flags.NameFont or "Plex"] or 2,
+					distFont = t53[Flags.DistFont or "Plex"] or 2,
+					equipFont = t53[Flags.EquipFont or "Plex"] or 2,
+					partyFont = t53[Flags.PartyFont or "Plex"] or 2,
+					partyColor = Flags.PartyColor or v113,
+					partyTransp = Flags.PartyTransparency or 1,
+					partyOutline = Flags.PartyOutline or false,
+					partyOutlineCol = Flags.PartyOutlineColor or v112,
+					lookLine = Flags.LookLine,
+					skel = Flags.ShowSkeleton,
+					skelVisCol = Flags.SkelVisColor,
+					skelVisible = SkelVisHidden and SkelVisHidden[1],
+					skelHidden = SkelVisHidden and SkelVisHidden[2],
+					skelColor = Flags.SkeletonColor,
+					skelThick = Flags.SkeletonThickness or 1,
+					tracers = Flags.ShowTracers,
+					tracerColor = Flags.TracerLineColor or v114,
+					tracerThick = Flags.TracerThickness or 1,
+				}
+			end)()
+		end
+
+		local function ot(p240, p241)
+			return (function()
+				if dy("ESP") then
+					local Flags = u24.Flags
+
+					if Flags.VisColor or Flags.NameVisColor or Flags.SkelVisColor or Flags.CharmsVisColor then
+						vk()
+					end
+
+					local v987 = v1.os.clock()
+
+					if not t21.espCfg or v987 - t21.espCfgTime >= 0.1 then
+						t21.espCfgTime = v987
+						t21.rebuildEspConfig()
+					end
+
+					local espCfg = t21.espCfg
+					local v989 = Vv()
+					local v990 = espCfg.visColor or (espCfg.nameVisColor or (espCfg.skelVisCol or espCfg.charmsVisColor))
+					local v991 = espCfg.lookLine and v987 - n5 >= 0.04
+					local v992 = espCfg.skel and v987 - n4 >= 0.04
+					local v993 = v987 - (t21.espTextTime or 0) >= 0.03333333333333333
+
+					for _, v995 in v1.ipairs(t18) do
+						local Character4 = v995.Character
+						local v997 = t2[v995]
+
+						if not ux(Character4) then
+							Pg(v995)
+						else
+							local v998 = Fu(v995, Character4, Flags.ShowSkeleton)
+
+							if not v998 then
+								Pg(v995)
+							else
+								local root = v998.root
+								local head = v998.head
+								local leftFoot = v998.leftFoot
+								local rootPosition = root.Position
+								local v1003, v1004 = ru(rootPosition)
+
+								if v1004 then
+									local Magnitude = (rootPosition - v989).Magnitude
+
+									if not (Magnitude > espCfg.maxDist) then
+										if not v997 then
+											v997 = Ku(v995)
+											t2[v995] = v997
+										end
+
+										if not v998.equippedConn then
+											local Equipped = Character4:FindFirstChild("Equipped")
+
+											if Equipped then
+												v998.equippedConn = Equipped.ChildAdded.Connect(Equipped.ChildAdded, function(p244)
+													v998.lastEquipItem = p244
+													v998.equipped = Equipped
+												end)
+												v998.equippedConnRemove = Equipped.ChildRemoved.Connect(Equipped.ChildRemoved, function()
+													return (function()
+														if Equipped:FindFirstChildWhichIsA("Instance") ~= nil then
+															return
+														end
+
+														v998.lastEquipItem = nil
+													end)()
+												end)
+											end
+										end
+
+										local headPosition = head.Position
+										local v1008 = ru(headPosition + v117)
+										local v1009 = leftFoot and leftFoot.CFrame.Y - 1 or rootPosition.Y - 3
+										local rootCFrame = root.CFrame
+										local v1011 = ru(v1.Vector3.new(rootCFrame.X, v1009, rootCFrame.Z))
+										local v1012 = v1.math.max(v1.math.abs(v1008.Y - v1011.Y), 12)
+										local v1013 = v1012 / 1.6
+										local v1014 = v1003.X - v1013 / 2
+										local Y = v1008.Y
+										local v1016 = v1.math.clamp(v1003.Z, 5, 1000)
+										local v1017 = v1.math.clamp(1 / (v1016 / 50), 0.8, 2)
+										local v1018 = v1.math.floor(espCfg.nameSize * v1017)
+										local v1019 = v1.math.floor(espCfg.distSize * v1017)
+										local v1020 = v1.math.floor(espCfg.equipSize * v1017)
+										local v1021 = v1.math.floor(espCfg.partySize * v1017)
+										local v1022 = not not v990 and (Lc(v995) or false)
+										local v1023 = espCfg.visColor and (v1022 and espCfg.boxVisible or espCfg.boxHidden) or espCfg.boxStandard
+										local v1024 = espCfg.nameVisColor and (v1022 and espCfg.nameVisible or espCfg.nameHidden) or espCfg.nameStandard
+
+										v997.box.Size = v1.Vector2.new(v1013, v1012)
+										v997.box.Position = v1.Vector2.new(v1014, Y)
+										v997.box.Visible = espCfg.box
+										v997.box.Color = v1023
+										v997.box.Thickness = espCfg.boxThick
+
+										if v997.boxOutline then
+											v997.boxOutline.Size = v1.Vector2.new(v1013, v1012)
+											v997.boxOutline.Position = v1.Vector2.new(v1014, Y)
+											v997.boxOutline.Visible = espCfg.box and espCfg.boxOutline
+											v997.boxOutline.Color = espCfg.boxOutlineCol
+											v997.boxOutline.Thickness = espCfg.boxThick + espCfg.boxOutlineThick
+										end
+
+										v997.name.Position = v1.Vector2.new(v1003.X, Y - (v1018 + 2))
+										v997.name.Visible = espCfg.name
+
+										if v993 then
+											v997.name.Size = v1018
+											v997.name.Color = v1024
+											v997.name.Transparency = espCfg.nameTransp
+											v997.name.Outline = espCfg.nameOutline
+											v997.name.OutlineColor = espCfg.nameOutlineCol
+											v997.name.Font = espCfg.nameFont
+										end
+
+										if espCfg.partyTag and qr(v995) then
+											v997.party.Position = v1.Vector2.new(v1003.X, Y - v1018 - v1021 - 3)
+											v997.party.Visible = true
+
+											if v993 then
+												v997.party.Size = v1021
+												v997.party.Color = espCfg.partyColor
+												v997.party.Transparency = espCfg.partyTransp
+												v997.party.Outline = espCfg.partyOutline
+												v997.party.OutlineColor = espCfg.partyOutlineCol
+												v997.party.Font = espCfg.partyFont
+											end
+										else
+											v997.party.Visible = false
+										end
+
+										local v1025 = Y + v1012 + 2
+
+										if espCfg.dist then
+											v997.dist.Position = v1.Vector2.new(v1003.X, v1025)
+											v997.dist.Visible = true
+
+											if v993 then
+												local v1026 = v1.math.floor(Magnitude)
+
+												if v1026 ~= v997.lastDistFloor then
+													v997.dist.Text = "[" .. v1026 .. "]"
+													v997.lastDistFloor = v1026
+												end
+
+												v997.dist.Size = v1019
+												v997.dist.Color = espCfg.distDyn and nx(Magnitude) or espCfg.distColor
+												v997.dist.Transparency = espCfg.distTransp
+												v997.dist.Outline = espCfg.distOutline
+												v997.dist.OutlineColor = espCfg.distOutlineCol
+												v997.dist.Font = espCfg.distFont
+											end
+										else
+											v997.dist.Visible = false
+										end
+
+										if espCfg.equip then
+											v997.equipped.Position = v1.Vector2.new(v1003.X, v1025 + v1019 + 1)
+											v997.equipped.Visible = true
+
+											if v993 then
+												local equipped = v998.equipped
+
+												if not equipped or not equipped.Parent then
+													v998.equipped = Character4:FindFirstChild("Equipped")
+													v998.lastEquipItem = nil
+												end
+
+												local v1028 = xk(Character4) or "Unarmed"
+
+												if v1028 ~= v997.lastEquipText then
+													v997.equipped.Text = v1028
+													v997.lastEquipText = v1028
+												end
+
+												v997.equipped.Size = v1020
+												v997.equipped.Color = espCfg.equipColor
+												v997.equipped.Transparency = espCfg.equipTransp
+												v997.equipped.Outline = espCfg.equipOutline
+												v997.equipped.OutlineColor = espCfg.equipOutlineCol
+												v997.equipped.Font = espCfg.equipFont
+											end
+										else
+											v997.equipped.Visible = false
+										end
+
+										if not espCfg.charms then
+											if v997.highlight then
+												v997.highlight.Enabled = false
+											end
+										else
+											local highlight = v997.highlight
+
+											if highlight and highlight.Parent then
+												if Character4 ~= highlight.Adornee then
+													highlight.Adornee = Character4
+
+													if Character4 ~= highlight.Parent then
+														highlight.Parent = Character4
+													end
+												end
+											else
+												highlight = v1.Instance.new("Highlight")
+												highlight.Name = ""
+												highlight.Adornee = Character4
+												highlight.Parent = Character4
+												v997.highlight = highlight
+											end
+
+											local charmsFill = espCfg.charmsFill
+
+											if espCfg.charmsVisColor then
+												charmsFill = v1022 and espCfg.charmsFillVisible or (espCfg.charmsFillHidden or charmsFill)
+											end
+
+											highlight.FillColor = charmsFill
+											highlight.FillTransparency = espCfg.charmsFillTransp
+											highlight.OutlineColor = espCfg.charmsOutline
+											highlight.OutlineTransparency = espCfg.charmsOutlineTransp
+											highlight.DepthMode = Flags.CharmsAlwaysOnTop and v1.Enum.HighlightDepthMode.AlwaysOnTop
+												or v1.Enum.HighlightDepthMode.Occluded
+											highlight.Enabled = true
+										end
+
+										if not espCfg.lookLine then
+											v997.lookLine.Visible = false
+										elseif v991 then
+											local v1031, v1032 = ru(headPosition)
+											local LookVector = head.CFrame.LookVector
+											local v1034, v1035 = ru(headPosition + LookVector * 15)
+
+											if v1032 and v1035 then
+												v997.lookLine.From = v1.Vector2.new(v1031.X, v1031.Y)
+												v997.lookLine.To = v1.Vector2.new(v1034.X, v1034.Y)
+
+												if p241 then
+													local v1036 = LookVector:Dot((p241.Position - headPosition).Unit)
+
+													if not (v1036 > 0.9) then
+														if not (v1036 < -0.3) then
+															v997.lookLine.Color = v116
+														else
+															v997.lookLine.Color = v115
+														end
+													else
+														v997.lookLine.Color = v114
+													end
+												end
+
+												v997.lookLine.Visible = true
+											else
+												v997.lookLine.Visible = false
+											end
+										end
+
+										if espCfg.skel then
+											if v992 then
+												local v1037 = espCfg.skelVisCol and (v1022 and espCfg.skelVisible or espCfg.skelHidden) or espCfg.skelColor
+												local v1038 = v1.math.max(espCfg.skelThick * v1017, 0.5)
+												local skeleton = v998.skeleton
+
+												for _, v1041 in v1.ipairs(v997.skeleton) do
+													local v1042 = skeleton[v1041.from]
+													local v1043 = skeleton[v1041.to]
+
+													if v1042 and v1043 then
+														local v1044, v1045 = ru(v1042.Position)
+														local v1046, v1047 = ru(v1043.Position)
+
+														if not v1045 or not v1047 then
+															v1041.line.Visible = false
+														else
+															v1041.line.From = v1.Vector2.new(v1044.X, v1044.Y)
+															v1041.line.To = v1.Vector2.new(v1046.X, v1046.Y)
+															v1041.line.Color = v1037
+															v1041.line.Thickness = v1038
+															v1041.line.Visible = true
+														end
+													else
+														v1041.line.Visible = false
+													end
+												end
+											end
+										else
+											for _, v1049 in v1.ipairs(v997.skeleton) do
+												v1049.line.Visible = false
+											end
+										end
+
+										if not espCfg.tracers then
+											v997.tracer.Visible = false
+										else
+											v997.tracer.From = p240
+											v997.tracer.To = v1.Vector2.new(v1003.X, v1003.Y)
+											v997.tracer.Color = espCfg.tracerColor
+											v997.tracer.Thickness = espCfg.tracerThick
+											v997.tracer.Visible = true
+										end
+									else
+										Pg(v995)
+									end
+								else
+									Pg(v995)
+								end
+							end
+						end
+					end
+
+					if v991 then
+						n5 = v987
+					end
+
+					if v992 then
+						n4 = v987
+					end
+
+					if not v993 then
+						return
+					end
+
+					t21.espTextTime = v987
+
+					return
+				end
+
+				for _, v1051 in v1.pairs(t2) do
+					v1051.box.Visible = false
+					v1051.name.Visible = false
+					v1051.dist.Visible = false
+					v1051.equipped.Visible = false
+					v1051.party.Visible = false
+					v1051.lookLine.Visible = false
+
+					if v1051.boxOutline then
+						v1051.boxOutline.Visible = false
+					end
+
+					if v1051.tracer then
+						v1051.tracer.Visible = false
+					end
+
+					if v1051.highlight then
+						v1051.highlight.Enabled = false
+					end
+
+					if v1051.skeleton then
+						for _, v1053 in v1.ipairs(v1051.skeleton) do
+							v1053.line.Visible = false
+						end
+					end
+				end
+			end)()
+		end
+
+		local n24 = 0
+
+		v1.table.insert(
+			t16,
+			v31.Heartbeat.Connect(v31.Heartbeat, function()
+				local v485 = v1.os.clock()
+
+				if not (v485 - n24 < 0.06666666666666667) then
+					n24 = v485
+					Iw()
+
+					return
+				end
+			end)
+		)
+		u70 = v31.RenderStepped.Connect(v31.RenderStepped, function()
+			return (function()
+				if not CurrentCamera then
+					return
+				end
+
+				local Flags = u24.Flags
+				local v1057 = u36 and u36:FindFirstChild("HumanoidRootPart")
+				local ViewportSize = CurrentCamera.ViewportSize
+
+				n6 = ViewportSize.X
+				n7 = ViewportSize.Y
+				n9 = n6 / n7
+				n8 = v1.math.tan(v1.math.rad(CurrentCamera.FieldOfView) * 0.5)
+
+				local v1059 = Zr()
+
+				if u129 then
+					u129.Position = v1059
+					u129.Radius = Flags.FOV
+					u129.Color = Flags.FOVColor
+					u129.Visible = not Flags.HideFOV and ((Flags.Aim or Flags.SilentAim) and not uo())
+				end
+
+				if Flags.SilentAim and not uo() then
+					local v1060, v1061, v1062 = xa()
+
+					u96 = v1060
+					u97 = v1061
+					u98 = v1062
+				else
+					u96 = nil
+					u97 = nil
+					u98 = nil
+				end
+
+				if Flags.Fullbright then
+					local Atmosphere = v30.Atmosphere
+					local FullbrightAtmosphereColor = Flags.FullbrightAtmosphereColor
+
+					if Atmosphere.Density ~= 0 then
+						Atmosphere.Density = 0
+					end
+
+					if v30.Brightness ~= Flags.FullbrightBrightness then
+						v30.Brightness = Flags.FullbrightBrightness
+					end
+
+					if v30.ClockTime ~= Flags.FullbrightClockTime then
+						v30.ClockTime = Flags.FullbrightClockTime
+					end
+
+					if v30.GlobalShadows ~= false then
+						v30.GlobalShadows = false
+					end
+
+					if v30.ColorShift_Bottom ~= t21.FULLBRIGHT_SHIFT then
+						v30.ColorShift_Bottom = t21.FULLBRIGHT_SHIFT
+					end
+
+					if v30.ColorShift_Top ~= t21.FULLBRIGHT_SHIFT then
+						v30.ColorShift_Top = t21.FULLBRIGHT_SHIFT
+					end
+
+					if v30.OutdoorAmbient ~= Flags.FullbrightOutdoorAmbientColor then
+						v30.OutdoorAmbient = Flags.FullbrightOutdoorAmbientColor
+					end
+
+					if v30.Ambient ~= Flags.FullbrightAmbientColor then
+						v30.Ambient = Flags.FullbrightAmbientColor
+					end
+
+					if FullbrightAtmosphereColor ~= Atmosphere.Color then
+						Atmosphere.Color = FullbrightAtmosphereColor
+					end
+
+					if FullbrightAtmosphereColor ~= Atmosphere.Decay then
+						Atmosphere.Decay = FullbrightAtmosphereColor
+					end
+				end
+
+				local v1065 = Flags.RemoveFog == true
+				local v1066 = if not v1065 then t21.origFogEnd else 1000000
+
+				if v1066 ~= v30.FogEnd then
+					v30.FogEnd = v1066
+				end
+
+				local v1067 = if not v1065 then t21.origDensity else 0
+
+				if v1067 ~= v30.Atmosphere.Density then
+					v30.Atmosphere.Density = v1067
+				end
+
+				local v1068 = not Flags.DisableClouds
+
+				if v1068 ~= Clouds.Enabled then
+					Clouds.Enabled = v1068
+				end
+
+				local v1069 = v32:IsMouseButtonPressed(v1.Enum.UserInputType.MouseButton2)
+				local NormalAimKey = Flags.NormalAimKey
+
+				if NormalAimKey and NormalAimKey ~= v1.Enum.KeyCode.Unknown then
+					v1069 = if v1.typeof(NormalAimKey) ~= "EnumItem" or NormalAimKey.EnumType ~= v1.Enum.UserInputType
+						then v1069 or v32:IsKeyDown(NormalAimKey)
+						else v1069 or v32:IsMouseButtonPressed(NormalAimKey)
+				end
+
+				local ThirdAimKey = Flags.ThirdAimKey
+				local v1072 = false
+
+				if
+					ThirdAimKey
+					and v1.typeof(ThirdAimKey) == "EnumItem"
+					and ThirdAimKey.EnumType == v1.Enum.KeyCode
+					and ThirdAimKey ~= v1.Enum.KeyCode.Unknown
+				then
+					v1072 = v32:IsKeyDown(ThirdAimKey)
+				end
+
+				local v1073 = Flags.Aim and (not Flags.SilentAim and (not uo() and (Sh() and (v1069 or v1072))))
+
+				if not Sh() and u94 then
+					Ch()
+				end
+
+				if not v1073 then
+					Ch()
+				else
+					local v1074 = Rr()
+
+					if v1074 and v1074.Parent then
+						local Parent = v1074.Parent
+
+						if Parent:FindFirstChild("HumanoidRootPart") then
+							local CFramePosition = CurrentCamera.CFrame.Position
+							local _, v1078 = Ki(Parent)
+							local v1079 = v1078 or v1074.Position
+
+							if (dy("AimPart") or "Head") == "Head" then
+								v1079 -= v1.Vector3.new(0, 0.6, 0)
+							end
+
+							if Flags.Prediction then
+								v1079 += v1074.AssemblyLinearVelocity * ((v1079 - CFramePosition).Magnitude / v1.math.max(El(), 1))
+							end
+
+							local v1080 = vb(v1079)
+
+							if not v1080 then
+								Ch()
+							else
+								local v1081 = Nk()
+
+								if v1081 < v1080.Magnitude then
+									local n25 = 1
+
+									if CurrentCamera.FieldOfView < t24.SCOPED_FOV_THRESHOLD then
+										n25 *= t24.SCOPED_SLOWDOWN_MULT
+									end
+
+									if v1072 then
+										n25 *= t24.THIRD_PERSON_SLOWDOWN_MULT
+									end
+
+									local v1083 = aw(v1080 / n25, v1080, v1081)
+
+									yb()
+									v1.mousemoverel(v1083.X, v1083.Y)
+								else
+									yb()
+								end
+							end
+						else
+							Ch()
+						end
+					else
+						Ch()
+					end
+				end
+
+				ot(v1059, v1057)
+			end)()
+		end)
+		v1.table.insert(t16, u70)
+
+		local function Xc(p249)
+			if p249 == LocalPlayer then
+				return
+			end
+
+			v1.table.insert(
+				t16,
+				p249.CharacterRemoving.Connect(p249.CharacterRemoving, function()
+					t3[p249] = nil
+
+					if t4[p249] then
+						t4[p249].Destroy(t4[p249])
+						t4[p249] = nil
+					end
+
+					if t2[p249] then
+						for v1084, v1085 in v1.pairs(t2[p249]) do
+							if v1084 ~= "skeleton" then
+								if v1084 ~= "highlight" then
+									Jl(v1085)
+								elseif v1085 then
+									v1.pcall(function()
+										v1085:Destroy()
+									end)
+								end
+							else
+								for _, v1087 in v1.ipairs(v1085) do
+									Jl(v1087.line)
+								end
+							end
+						end
+
+						t2[p249] = nil
+					end
+
+					if u94 and p249.Character and u94.Parent == p249.Character then
+						u94 = nil
+					end
+				end)
+			)
+			v1.table.insert(
+				t16,
+				p249.CharacterAdded.Connect(p249.CharacterAdded, function(p250)
+					v1.task.spawn(function()
+						return (function()
+							v1.task.wait(0.5)
+
+							if u24.Flags.MapMarkers and (p250 and p250.PrimaryPart) then
+								Ep(p249)
+							end
+						end)()
+					end)
+				end)
+			)
+		end
+
+		for _, v265 in v1.ipairs(t18) do
+			Xc(v265)
+
+			if v265.Character and v265.Character.FindFirstChild(v265.Character, "HumanoidRootPart") then
+				Ep(v265)
+			end
+		end
+
+		v1.table.insert(t16, v28.PlayerAdded.Connect(v28.PlayerAdded, Xc))
+		v1.table.insert(
+			t16,
+			v28.PlayerRemoving.Connect(v28.PlayerRemoving, function(p253)
+				return (function()
+					t3[p253] = nil
+
+					if t4[p253] then
+						t4[p253].Destroy(t4[p253])
+						t4[p253] = nil
+					end
+
+					if t2[p253] then
+						for v1091, v1092 in v1.pairs(t2[p253]) do
+							if v1091 == "skeleton" then
+								for _, v1094 in v1.ipairs(v1092) do
+									Jl(v1094.line)
+								end
+							elseif v1091 ~= "highlight" then
+								Jl(v1092)
+							elseif v1092 then
+								v1.pcall(function()
+									v1092:Destroy()
+								end)
+							end
+						end
+
+						t2[p253] = nil
+					end
+
+					if not t10[p253.Name] then
+						return
+					end
+
+					t10[p253.Name].Remove(t10[p253.Name])
+					t10[p253.Name] = nil
+				end)()
+			end)
+		)
+
+		for _, v267 in v1.ipairs(v1.workspace.Vehicles.GetChildren(v1.workspace.Vehicles)) do
+			if v267:IsA("Model") then
+				Km(v267)
+			end
+		end
+
+		v1.table.insert(
+			t16,
+			v1.workspace.Vehicles.ChildAdded.Connect(v1.workspace.Vehicles.ChildAdded, function(p256)
+				if not p256:IsA("Model") then
+					return
+				end
+
+				v1.task.spawn(function()
+					v1.task.wait(0.1)
+					Km(p256)
+				end)
+			end)
+		)
+		v1.table.insert(
+			t16,
+			v1.workspace.Vehicles.ChildRemoved.Connect(v1.workspace.Vehicles.ChildRemoved, function(p257)
+				if not t5[p257] then
+					return
+				end
+
+				t5[p257].Destroy(t5[p257])
+				t5[p257] = nil
+			end)
+		)
+
+		if v75 then
+			v1.table.insert(
+				t16,
+				v75.ChildAdded.Connect(v75.ChildAdded, function(p258)
+					if p258:IsA("Model") then
+						t21.refreshCorpseTPOptions()
+					end
+				end)
+			)
+			v1.table.insert(
+				t16,
+				v75.ChildRemoved.Connect(v75.ChildRemoved, function(_)
+					t21.refreshCorpseTPOptions()
+				end)
+			)
+		end
+
+		if v76 then
+			v1.table.insert(
+				t16,
+				v76.ChildAdded.Connect(v76.ChildAdded, function(p260)
+					if u24.Flags.EventESP then
+						if not t20[p260.Name] then
+							return
+						end
+
+						v1.task.spawn(function()
+							return (function()
+								v1.task.wait(0.1)
+								hf()
+							end)()
+						end)
+					end
+				end)
+			)
+			v1.table.insert(
+				t16,
+				v76.ChildRemoved.Connect(v76.ChildRemoved, function(p263)
+					return (function()
+						if not t9[p263] then
+							return
+						end
+
+						t9[p263].Destroy(t9[p263])
+						t9[p263] = nil
+					end)()
+				end)
+			)
+			v1.table.insert(
+				t16,
+				v76.DescendantAdded.Connect(v76.DescendantAdded, function(p266)
+					return (function()
+						if dy("StripFoliage") then
+							if not p266:IsA("MeshPart") then
+								return
+							end
+
+							local p266Name = p266.Name
+
+							for _, v1101 in v1.ipairs(t21.foliagePatterns) do
+								if v1.string.find(p266Name, v1101, 1, true) then
+									v1.pcall(function()
+										p266:Destroy()
+									end)
+
+									return
+								end
+							end
+
+							return
+						end
+					end)()
+				end)
+			)
+		end
+
+		Tn()
+		wq()
+		Mh()
+		Mq()
+		v23:Init()
+		u24:Notify({
+			Title = "Loaded",
+			Content = "Apoc 2 Shenanigans v2.3.0 ready!",
+			Duration = 4,
+		})
+
+		return
+end)(...)
